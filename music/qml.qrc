@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qml/uiItem/Triangle.qml</file>
-        <file>qml/uiItem/LeftDoubleTriangle.qml</file>
-        <file>qml/uiItem/RightDoubleTriangle.qml</file>
+        <file>qml/uiItem/DoubleTriangle.qml</file>
+        <file>qml/uiItem/PreOrNextButton.qml</file>
     </qresource>
 </RCC>
