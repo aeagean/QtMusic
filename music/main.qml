@@ -10,12 +10,12 @@ Window {
 
     PreOrNextButton {
         anchors.horizontalCenter: parent.horizontalCenter
-        size: parent.width > parent.height ? (parent.width*parent.width/50) : parent.height/50
+        size: parent.width > parent.height ? (parent.width*0.08) : parent.height*0.08
     }
 
     PreOrNextButton {
         size: parent.width > parent.height ?
-                  (parent.width * parent.width/50) : parent.height/50
+                  (parent.width * 0.08) : parent.height*0.08
         rotation: 180
     }
 }
