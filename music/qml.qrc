@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/uiItem/Triangle.qml</file>
+        <file>qml/uiItem/LeftDoubleTriangle.qml</file>
+        <file>qml/uiItem/RightDoubleTriangle.qml</file>
+    </qresource>
+</RCC>
