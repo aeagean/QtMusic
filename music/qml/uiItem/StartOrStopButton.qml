@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     signal clickedChanged()
-    property int size: 50
+    property int size: 75
     id: backGroundId
     width: size; height: size
     radius: size/2
@@ -10,9 +10,19 @@ Rectangle {
     border.width: size/25
     border.color: "#e9e9e9"
 
-    DoubleTriangle {
+    Row {
         anchors.centerIn: parent
-        size: parent.size/3
+        spacing: size/8
+
+        Rectangle {
+            width: size/10; height: size/2.3
+            color: "#474747"
+        }
+
+        Rectangle {
+            width: size/10; height: size/2.3
+            color: "#474747"
+        }
     }
 
     MouseArea {

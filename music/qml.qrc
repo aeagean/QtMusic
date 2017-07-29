@@ -4,5 +4,6 @@
         <file>qml/uiItem/Triangle.qml</file>
         <file>qml/uiItem/DoubleTriangle.qml</file>
         <file>qml/uiItem/PreOrNextButton.qml</file>
+        <file>qml/uiItem/StartOrStopButton.qml</file>
     </qresource>
 </RCC>
