@@ -4,12 +4,10 @@ Rectangle {
     signal valueSig(real val)
     property var value: 0.5
     width: parent.width; height: parent.height
-    color: "lightblue"
-    x: 30
+    color: "#00000000"
 
-//    onWidthChanged: {
-//        sliderId.x = value*(width-width/40)
-//    }
+    onWidthChanged: sliderId.x = value*(width)-width/40
+
 
     Rectangle {
         id: rectBackgroundId
@@ -21,7 +19,6 @@ Rectangle {
     Rectangle {
         id: sliderId
         width: parent.width/20; height: parent.height
-//        color: "red"
         color: "#00000000"
         x: value*(rectBackgroundId.width)-rectBackgroundId.width/40
 
