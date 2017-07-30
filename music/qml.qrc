@@ -1,9 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>qml/uiItem/Triangle.qml</file>
-        <file>qml/uiItem/DoubleTriangle.qml</file>
-        <file>qml/uiItem/PreOrNextButton.qml</file>
-        <file>qml/uiItem/StartOrStopButton.qml</file>
+        <file>qml/Common/Triangle.qml</file>
+        <file>qml/Common/DoubleTriangle.qml</file>
+        <file>qml/Common/PreOrNextButton.qml</file>
+        <file>qml/Common/StartOrStopButton.qml</file>
+        <file>qml/MainWin/content/MusicPlayControlBar.qml</file>
+        <file>qml/MainWin/main.qml</file>
+        <file>qml/MainWin/content/VolumeControlBar.qml</file>
+        <file>qml/Common/SliderBar/SliderBar.qml</file>
     </qresource>
 </RCC>
