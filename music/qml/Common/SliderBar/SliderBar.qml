@@ -2,8 +2,9 @@ import QtQuick 2.0
 
 Rectangle {
     signal valueSig(real val)
-    property var value: 0.5 //0.1-1.0
-    width: parent.width; height: parent.height
+    property real value: 0.5 //0.1-1.0
+
+//    width: parent.width; height: parent.height
     color: "#00000000"
 
     onWidthChanged: sliderId.x = value*(width)-width/40
