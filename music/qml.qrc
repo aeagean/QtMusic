@@ -8,5 +8,6 @@
         <file>qml/MainWin/main.qml</file>
         <file>qml/MainWin/content/VolumeControlBar.qml</file>
         <file>qml/Common/SliderBar/SliderBar.qml</file>
+        <file>qml/MainWin/content/ProgressBar.qml</file>
     </qresource>
 </RCC>

@@ -14,23 +14,12 @@ Window {
     Column {
         anchors.fill: parent
 
-        VolumeControlBar {
+        ProgressBar {
             width: parent.width; height: parent.height/30
-
         }
 
         MusicPlayControlBar {
             width: parent.width; height: parent.height/10
-        }
-
-//        Slider {
-
-//        }
-
-        SliderBar {
-           width: 3*parent.width/5; height: parent.height/30
-//            rotation: 90
-           onValueSig: value = val
         }
     }
 }
