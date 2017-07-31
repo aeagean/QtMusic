@@ -1,6 +1,7 @@
 TEMPLATE = app
 
 QT += qml quick
+QT += multimedia
 CONFIG += c++11
 
 SOURCES += main.cpp \
@@ -8,7 +9,7 @@ SOURCES += main.cpp \
     MediaPlayControl/MusicPlayControl.cpp
 
 RESOURCES += qml.qrc
-
+INCLUDEPATH += MediaPlayControl
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 

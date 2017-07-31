@@ -11,15 +11,17 @@ Window {
     height: 1920*0.3
     title: qsTr("Music")
 
-    Column {
-        anchors.fill: parent
 
-        ProgressBar {
-            width: parent.width; height: parent.height/30
-        }
 
-        MusicPlayControlBar {
-            width: parent.width; height: parent.height/10
-        }
-    }
+//    Column {
+//        anchors.fill: parent
+
+//        ProgressBar {
+//            width: parent.width; height: parent.height/30
+//        }
+
+//        MusicPlayControlBar {
+//            width: parent.width; height: parent.height/10
+//        }
+//    }
 }

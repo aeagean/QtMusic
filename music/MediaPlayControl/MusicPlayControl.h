@@ -2,6 +2,7 @@
 #define MUSICPLAYCONTROL_H
 
 #include <QObject>
+#include <QMediaPlayer>
 
 class MusicPlayControl : public QObject
 {
@@ -19,6 +20,7 @@ signals:
 
 private:
     bool m_isStart;
+    QMediaPlayer m_mediaPlayer;
 };
 
 #endif // MUSICPLAYCONTROL_H
