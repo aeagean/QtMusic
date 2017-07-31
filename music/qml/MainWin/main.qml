@@ -13,15 +13,15 @@ Window {
 
 
 
-//    Column {
-//        anchors.fill: parent
+    Column {
+        anchors.fill: parent
 
-//        ProgressBar {
-//            width: parent.width; height: parent.height/30
-//        }
+        ProgressBar {
+            width: parent.width; height: parent.height/30
+        }
 
-//        MusicPlayControlBar {
-//            width: parent.width; height: parent.height/10
-//        }
-//    }
+        MusicPlayControlBar {
+            width: parent.width; height: parent.height/10
+        }
+    }
 }

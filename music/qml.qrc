@@ -5,5 +5,9 @@
         <file>qml/MainWin/content/VolumeControlBar.qml</file>
         <file>qml/Common/SliderBar/SliderBar.qml</file>
         <file>qml/MainWin/content/ProgressBar.qml</file>
+        <file>qml/Common/DoubleTriangle.qml</file>
+        <file>qml/Common/PreOrNextButton.qml</file>
+        <file>qml/Common/StartOrStopButton.qml</file>
+        <file>qml/Common/Triangle.qml</file>
     </qresource>
 </RCC>
