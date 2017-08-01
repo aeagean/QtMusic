@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
 
-//    MusicPlayControl m = new MusicPlayControl();
+    MusicPlayControl* m = new MusicPlayControl();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/MainWin/main.qml")));

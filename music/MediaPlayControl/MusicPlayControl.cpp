@@ -2,9 +2,9 @@
 
 MusicPlayControl::MusicPlayControl()
 {
-//    m_mediaPlayer->setMedia(QUrl::fromLocalFile("/Users/me/Music/coolsong.mp3"));
-//    m_mediaPlayer->setVolume(50);
-//    m_mediaPlayer->play();
+    m_mediaPlayer.setMedia(QMediaContent(QUrl("qrc:/resource/Imiss.mp3")));
+    m_mediaPlayer.setVolume(100);
+    m_mediaPlayer.play();
 }
 
 bool MusicPlayControl::getIsStart()
