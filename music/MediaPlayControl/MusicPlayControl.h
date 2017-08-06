@@ -18,6 +18,9 @@ signals:
     void indexChanged();
     void statusChanged();
 
+private slots:
+    void positionChanged(qint64);
+
 private:
     bool m_isStart;
     QMediaPlayer m_mediaPlayer;

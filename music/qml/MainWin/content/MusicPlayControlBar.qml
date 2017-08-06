@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import MusicPlayControl 1.0
 import "../../Common"
 
 Row {
@@ -16,6 +17,8 @@ Row {
         width: parent.width/3; height: parent.height
         StartOrStopButton {
             anchors.centerIn: parent
+            isStartStatus: musicPlayControl.isStart
+            onClickedChanged: musicPlayControl.isStart = !musicPlayControl.isStart
         }
     }
     Item {
@@ -24,5 +27,10 @@ Row {
             direction: "right"
             anchors.centerIn: parent
         }
+    }
+
+    MusicPlayControl {
+        id: musicPlayControl
+        isStart: false
     }
 }

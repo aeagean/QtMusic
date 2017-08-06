@@ -3,22 +3,13 @@
 
 MusicPlayControl::MusicPlayControl()
 {
-//    m_mediaPlayer.setMedia(QUrl::fromLocalFile("/home/strong/android/otherspace/music/music/resource/Imiss.mp3"));
-//    m_mediaPlayer.setVolume(50);
-
+    connect(&m_mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
+    QMediaContent content(QUrl::fromLocalFile("/home/strong/workspace/music/music/resource/Imiss.mp3"));
+    m_mediaPlayer.setMedia(content);
+    m_mediaPlayer.setVolume(100);
 //    m_mediaPlayer.play();
 
-    QMediaPlayer * m = new QMediaPlayer();
-     QMediaPlaylist* playList=new QMediaPlaylist;
-    playList->setPlaybackMode(QMediaPlaylist::Loop);
-    playList->addMedia(QUrl::fromLocalFile("/home/strong/android/otherspace/music/music/resource/Imiss.mp3"));
-    m->setPlaylist(playList);
-//    m->setAudioRole(QAudio::MusicRole);
-//    m->setMedia(QUrl::fromLocalFile("/home/strong/android/otherspace/music/music/resource/Imiss.mp3"));
-    m->setVolume(50);
-
-    m->play();
-    qDebug()<<m->error()<<"+++";
+    qDebug()<<m_mediaPlayer.error()<<"+++";
 }
 
 bool MusicPlayControl::getIsStart()
@@ -29,5 +20,12 @@ bool MusicPlayControl::getIsStart()
 void MusicPlayControl::setIsStart(bool status)
 {
     m_isStart = status;
+    if (m_isStart == true) m_mediaPlayer.play();
+    else m_mediaPlayer.pause();
     emit statusChanged();
+}
+
+void MusicPlayControl::positionChanged(qint64)
+{
+
 }
