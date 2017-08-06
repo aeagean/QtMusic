@@ -3,13 +3,9 @@
 
 MusicPlayControl::MusicPlayControl()
 {
-    connect(&m_mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
-    QMediaContent content(QUrl::fromLocalFile("/home/strong/workspace/music/music/resource/Imiss.mp3"));
-    m_mediaPlayer.setMedia(content);
-    m_mediaPlayer.setVolume(100);
-//    m_mediaPlayer.play();
-
-    qDebug()<<m_mediaPlayer.error()<<"+++";
+    this->setMedia(QMediaContent(QUrl("qrc:/resource/Imiss.mp3")));
+    this->setVolume(100);
+    this->play();
 }
 
 bool MusicPlayControl::getIsStart()
@@ -20,12 +16,7 @@ bool MusicPlayControl::getIsStart()
 void MusicPlayControl::setIsStart(bool status)
 {
     m_isStart = status;
-    if (m_isStart == true) m_mediaPlayer.play();
-    else m_mediaPlayer.pause();
+    if (m_isStart == true) this->play();
+    else this->pause();
     emit statusChanged();
-}
-
-void MusicPlayControl::positionChanged(qint64)
-{
-
 }

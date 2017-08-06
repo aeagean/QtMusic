@@ -19,6 +19,11 @@ Row {
             anchors.centerIn: parent
             isStartStatus: musicPlayControl.isStart
             onClickedChanged: musicPlayControl.isStart = !musicPlayControl.isStart
+
+            MusicPlayControl {
+                id: musicPlayControl
+                isStart: false
+            }
         }
     }
     Item {
@@ -29,8 +34,5 @@ Row {
         }
     }
 
-    MusicPlayControl {
-        id: musicPlayControl
-        isStart: false
-    }
+
 }
