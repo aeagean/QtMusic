@@ -12,6 +12,7 @@ public:
 
     Q_PROPERTY(QString pathName READ getPathName WRITE setPathName NOTIFY statusChanged)
     Q_PROPERTY(QStringList pathNameList READ getPathNameList NOTIFY statusPathNameChanged)
+    Q_PROPERTY(bool isAllSelected READ getIsAllSelected WRITE setIsAllSelected NOTIFY statusChanged)
 
     Q_INVOKABLE void changedPath(int index);
 
@@ -20,16 +21,21 @@ public:
 
     QStringList getPathNameList();
 
+    bool getIsAllSelected();
+    void setIsAllSelected(bool status);
+
 public slots:
     void reload();
 
 signals:
     void statusChanged();
     void statusPathNameChanged();
+    void isAllSelectedChanged();
 
 private:
     QString m_pathName;
     QStringList m_pathNameList;
+    bool m_isAllSelected;
 };
 
 #endif // FILEBROWSERLISTMODEL_H

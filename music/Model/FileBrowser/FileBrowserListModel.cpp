@@ -1,5 +1,6 @@
 #include "FileBrowserListModel.h"
 #include "FileBrowserService.h"
+#include <QDebug>
 
 FileBrowserListModel::FileBrowserListModel()
 {
@@ -35,6 +36,17 @@ QStringList FileBrowserListModel::getPathNameList()
     return m_pathNameList;
 }
 
+bool FileBrowserListModel::getIsAllSelected()
+{
+    return m_isAllSelected;
+}
+
+void FileBrowserListModel::setIsAllSelected(bool status)
+{
+    m_isAllSelected = status;
+    emit statusChanged();
+}
+
 void FileBrowserListModel::reload()
 {
     this->m_pathNameList.clear();
@@ -45,6 +57,7 @@ void FileBrowserListModel::reload()
     for (int i = 0; i < pathList.count(); i++) {
         FileBrowserModel* model = new FileBrowserModel(this);
         model->setPathName(pathList.at(i));
+        model->setIsSelected(this->getIsAllSelected());
         modelList.append(model);
     }
 

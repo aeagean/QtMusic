@@ -15,7 +15,6 @@ public:
     void setIsStart(bool status);
 
 signals:
-    void indexChanged();
     void statusChanged();
 
 private:

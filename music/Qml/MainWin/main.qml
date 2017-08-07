@@ -26,9 +26,28 @@ Window {
             width: parent.width; height: parent.height/10
             musicPlayControlModel: musicPlayControl
         }
+
+        Rectangle {
+            width: parent.width; height: parent.height/10
+            color: "lightblue"
+
+            Text {
+                id: name
+                anchors.centerIn: parent
+                text: qsTr("open file")
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: fileBrowser.visible = true
+            }
+        }
     }
 
+    //-------------------------------------------------win
+
     FileBrowser {
+        id: fileBrowser
         anchors.fill: parent
     }
 

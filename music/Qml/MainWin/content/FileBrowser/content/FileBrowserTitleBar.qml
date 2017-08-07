@@ -37,5 +37,21 @@ Rectangle {
                font.pixelSize: parent.height/2.5
            }
         }
+
+        Rectangle {
+           width: parent.width/5; height: parent.height
+
+           Text {
+               anchors.centerIn: parent
+               color: "black"
+               text: "finish"
+               font.pixelSize: parent.height/2.5
+           }
+
+           MouseArea {
+               anchors.fill: parent
+               onClicked: fileBrowserListModel.isAllSelected = !fileBrowserListModel.isAllSelected
+           }
+        }
     }
 }

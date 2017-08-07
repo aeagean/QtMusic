@@ -3,6 +3,8 @@ import FileBrowserListModel 1.0
 import "content"
 
 Rectangle {
+    id: fileBrowser
+    visible: false
     anchors.fill: parent
 
     MouseArea { anchors.fill: parent }
@@ -12,7 +14,7 @@ Rectangle {
 
         FileBrowserTitleBar {
             width: parent.width; height: parent.height/17
-            onBacked: fileBrowserListModel.pathName = "/"
+            onBacked: fileBrowser.visible = false
         }
 
         FileBrowserSimpleFileList { width: parent.width; height: parent.height/19}
