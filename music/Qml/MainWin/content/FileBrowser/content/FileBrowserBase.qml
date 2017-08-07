@@ -18,7 +18,19 @@ Rectangle {
 
         Rectangle {
             width: parent.width; height: parent.height/10
-//            color: "lightblue"
+
+            Rectangle { width: parent.width; height: parent.height; color: "#f2f2f2" }
+
+            Text {
+                anchors.centerIn: parent
+                text: "增加"
+                font.pixelSize: parent.height/2.5
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: fileBrowserListModel.save()
+            }
         }
     }
 }

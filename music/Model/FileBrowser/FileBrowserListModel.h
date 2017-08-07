@@ -15,6 +15,7 @@ public:
     Q_PROPERTY(bool isAllSelected READ getIsAllSelected WRITE setIsAllSelected NOTIFY statusChanged)
 
     Q_INVOKABLE void changedPath(int index);
+    Q_INVOKABLE void save();
 
     QString getPathName();
     void setPathName(QString pathName);

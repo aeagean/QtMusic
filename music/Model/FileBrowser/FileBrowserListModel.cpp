@@ -20,6 +20,11 @@ void FileBrowserListModel::changedPath(int index)
     }
 }
 
+void FileBrowserListModel::save()
+{
+
+}
+
 QString FileBrowserListModel::getPathName()
 {
     return m_pathName;

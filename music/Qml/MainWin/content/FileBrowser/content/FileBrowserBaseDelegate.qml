@@ -40,7 +40,7 @@ Item {
         }
 
         Rectangle {
-//            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
             width: 0.7*parent.width/6; height: width
             radius: width/2
             color: modelData.isSelected ? "lightblue" : "red"

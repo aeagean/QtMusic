@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     Model/FileBrowser/FileBrowserListModel.cpp \
     Infrastructure/domain/BaseListModel.cpp \
     Infrastructure/domain/BaseItemModel.cpp \
-    Infrastructure/Repertory/MusicRepertory.cpp
+    Infrastructure/Repertory/MusicRepertory.cpp \
+    Service/Music/MusicListService.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
@@ -35,4 +36,5 @@ HEADERS += \
     Infrastructure/domain/ObjectListModel.h \
     Infrastructure/domain/BaseListModel.h \
     Infrastructure/domain/BaseItemModel.h \
-    Infrastructure/Repertory/MusicRepertory.h
+    Infrastructure/Repertory/MusicRepertory.h \
+    Service/Music/MusicListService.h
