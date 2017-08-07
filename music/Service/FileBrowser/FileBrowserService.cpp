@@ -1,4 +1,5 @@
 #include "FileBrowserService.h"
+#include <QDebug>
 
 FileBrowserService * FileBrowserService::_instance = NULL;
 
@@ -14,6 +15,14 @@ QFileInfoList FileBrowserService::getInfoPathList(QString path)
 {
     m_fileInfoList.clear();
     return m_fileInfoList = m_dir.entryInfoList();
+}
+
+QStringList FileBrowserService::getCurrentPathNameList()
+{
+    QStringList list;
+//    list.append("disk");
+    list.append(m_dir.path().split("/", QString::SkipEmptyParts));
+    return list;
 }
 
 QStringList FileBrowserService::getNamePathList(QString path)

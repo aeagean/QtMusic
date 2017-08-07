@@ -11,6 +11,7 @@ public:
     static FileBrowserService* instance();
     QStringList getNamePathList(QString path);
     QFileInfoList getInfoPathList(QString path);
+    QStringList getCurrentPathNameList();
 
 private:
     FileBrowserService();
