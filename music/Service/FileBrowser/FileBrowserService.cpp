@@ -10,7 +10,26 @@ FileBrowserService *FileBrowserService::instance()
     return _instance;
 }
 
+QFileInfoList FileBrowserService::getInfoPathList(QString path)
+{
+    m_fileInfoList.clear();
+    return m_fileInfoList = m_dir.entryInfoList();
+}
+
+QStringList FileBrowserService::getNamePathList(QString path)
+{
+    m_dir.setPath(path);
+    m_fileInfoList.clear();
+m_fileInfoList = m_dir.entryInfoList();
+    for (int i = 0; i < m_fileInfoList.count(); i++) {
+        m_namePathList.append(m_fileInfoList.at(i).fileName());
+    }
+    return m_namePathList;
+}
+
 FileBrowserService::FileBrowserService()
 {
-
+    m_dir.setPath("/");
+    m_dir.setFilter(QDir::Dirs|QDir::NoDotAndDotDot);
+    m_dir.setSorting(QDir::Name);
 }
