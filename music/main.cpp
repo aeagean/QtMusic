@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/qml/MainWin/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
 
 //    QDir dir("/");
 //    dir.setFilter(QDir::Dirs|QDir::Files|QDir::NoDotAndDotDot);

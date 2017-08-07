@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>resource/Imiss.mp3</file>
+        <file>Resource/Imiss.mp3</file>
     </qresource>
 </RCC>

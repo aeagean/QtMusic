@@ -1,13 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/MainWin/content/MusicPlayControlBar.qml</file>
-        <file>qml/MainWin/main.qml</file>
-        <file>qml/MainWin/content/VolumeControlBar.qml</file>
-        <file>qml/Common/SliderBar/SliderBar.qml</file>
-        <file>qml/MainWin/content/ProgressBar.qml</file>
-        <file>qml/Common/DoubleTriangle.qml</file>
-        <file>qml/Common/PreOrNextButton.qml</file>
-        <file>qml/Common/StartOrStopButton.qml</file>
-        <file>qml/Common/Triangle.qml</file>
+        <file>Qml/MainWin/content/MusicPlayControlBar.qml</file>
+        <file>Qml/MainWin/main.qml</file>
+        <file>Qml/MainWin/content/VolumeControlBar.qml</file>
+        <file>Qml/Common/SliderBar/SliderBar.qml</file>
+        <file>Qml/MainWin/content/ProgressBar.qml</file>
+        <file>Qml/Common/DoubleTriangle.qml</file>
+        <file>Qml/Common/PreOrNextButton.qml</file>
+        <file>Qml/Common/StartOrStopButton.qml</file>
+        <file>Qml/Common/Triangle.qml</file>
+        <file>Qml/MainWin/content/FileBrowser/FileBrowser.qml</file>
+        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserBase.qml</file>
     </qresource>
 </RCC>

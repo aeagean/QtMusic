@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../Common/SliderBar"
 
 Item {
+    property variant musicPlayControlModel
     width: parent.width; height: parent.height
 
     Row {

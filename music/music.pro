@@ -1,15 +1,19 @@
 TEMPLATE = app
 
+QT += core
 QT += qml quick multimedia
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    FileListViewModel.cpp \
-    MediaPlayControl/MusicPlayControl.cpp
+    Service/FileBrowser/FileBrowserService.cpp \
+    Model/MediaPlayControl/MusicPlayControl.cpp \
+    Model/FileBrowser/FileBrowserModel.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
-INCLUDEPATH += MediaPlayControl
+INCLUDEPATH += Model/MediaPlayControl \
+    Model/FileBrowser \
+    Service/FileBrowser/
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
@@ -17,5 +21,7 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    FileListViewModel.h \
-    MediaPlayControl/MusicPlayControl.h
+    MediaPlayControl/MusicPlayControl.h \
+    Service/FileBrowser/FileBrowserService.h \
+    Model/MediaPlayControl/MusicPlayControl.h \
+    Model/FileBrowser/FileBrowserModel.h
