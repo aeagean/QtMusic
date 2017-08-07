@@ -11,5 +11,8 @@
         <file>Qml/Common/Triangle.qml</file>
         <file>Qml/MainWin/content/FileBrowser/FileBrowser.qml</file>
         <file>Qml/MainWin/content/FileBrowser/content/FileBrowserBase.qml</file>
+        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserTitleBar.qml</file>
+        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserSimpleFileList.qml</file>
+        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserBaseDelegate.qml</file>
     </qresource>
 </RCC>

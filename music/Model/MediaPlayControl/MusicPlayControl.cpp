@@ -3,9 +3,9 @@
 
 MusicPlayControl::MusicPlayControl()
 {
-    this->setMedia(QMediaContent(QUrl("qrc:/resource/Imiss.mp3")));
+    this->setMedia(QMediaContent(QUrl("qrc:/Resource/Imiss.mp3")));
     this->setVolume(100);
-    this->play();
+
 }
 
 bool MusicPlayControl::getIsStart()

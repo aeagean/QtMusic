@@ -5,6 +5,7 @@
 #include <QtQml>
 #include "MusicPlayControl.h"
 #include "FileBrowserService.h"
+#include "FileBrowserListModel.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -12,11 +13,11 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
+    qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
 
     QQmlApplicationEngine engine;
-//    engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
 
-    qDebug()<<FileBrowserService::instance()->getNamePathList("/");
 //    QDir dir("/");
 //    dir.setFilter(QDir::Dirs|QDir::Files|QDir::NoDotAndDotDot);
 //    dir.setSorting(QDir::Name);

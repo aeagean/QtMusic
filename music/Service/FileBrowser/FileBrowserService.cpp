@@ -18,9 +18,10 @@ QFileInfoList FileBrowserService::getInfoPathList(QString path)
 
 QStringList FileBrowserService::getNamePathList(QString path)
 {
+    m_namePathList.clear();
     m_dir.setPath(path);
     m_fileInfoList.clear();
-m_fileInfoList = m_dir.entryInfoList();
+    m_fileInfoList = m_dir.entryInfoList();
     for (int i = 0; i < m_fileInfoList.count(); i++) {
         m_namePathList.append(m_fileInfoList.at(i).fileName());
     }

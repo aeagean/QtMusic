@@ -7,13 +7,17 @@ CONFIG += c++11
 SOURCES += main.cpp \
     Service/FileBrowser/FileBrowserService.cpp \
     Model/MediaPlayControl/MusicPlayControl.cpp \
-    Model/FileBrowser/FileBrowserModel.cpp
+    Model/FileBrowser/FileBrowserModel.cpp \
+    Model/FileBrowser/FileBrowserListModel.cpp \
+    Infrastructure/domain/BaseListModel.cpp \
+    Infrastructure/domain/BaseItemModel.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
 INCLUDEPATH += Model/MediaPlayControl \
     Model/FileBrowser \
-    Service/FileBrowser/
+    Service/FileBrowser \
+    Infrastructure/domain/
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
@@ -24,4 +28,9 @@ HEADERS += \
     MediaPlayControl/MusicPlayControl.h \
     Service/FileBrowser/FileBrowserService.h \
     Model/MediaPlayControl/MusicPlayControl.h \
-    Model/FileBrowser/FileBrowserModel.h
+    Model/FileBrowser/FileBrowserModel.h \
+    Model/FileBrowser/FileBrowserListModel.h \
+    Infrastructure/domain/ObjectListModelImpl.h \
+    Infrastructure/domain/ObjectListModel.h \
+    Infrastructure/domain/BaseListModel.h \
+    Infrastructure/domain/BaseItemModel.h
