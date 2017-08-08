@@ -21,6 +21,7 @@ INCLUDEPATH += Model/MediaPlayControl \
     Model/FileBrowser \
     Service/FileBrowser \
     Infrastructure/domain \
+    Infrastructure/Repertory \
     Domain/
 
 # Additional import path used to resolve QML modules in Qt Creator's code model

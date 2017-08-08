@@ -9,13 +9,13 @@ class MusicRepertory : public QObject
     Q_OBJECT
 public:
     static MusicRepertory* instance();
-    QList<MusicBase *> getMusicBaseList();
+    QList<MusicBase *> getList();
 
-    MusicBase *getMusicBase(QString id);
+    MusicBase *get(QString id);
 
-    void addMusicBase(MusicBase *musicBase);
-    void rmMusicBase(QString id);
-    void updateMusicBase(MusicBase *musicBase);
+    void add(MusicBase *musicBase);
+    void remove(QString id);
+    void update(MusicBase *musicBase);
 
 private:
     MusicRepertory();

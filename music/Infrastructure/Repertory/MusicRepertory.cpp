@@ -10,12 +10,12 @@ MusicRepertory *MusicRepertory::instance()
     return _instance;
 }
 
-QList<MusicBase *> MusicRepertory::getMusicBaseList()
+QList<MusicBase *> MusicRepertory::getList()
 {
     return m_musicBaseList;
 }
 
-MusicBase *MusicRepertory::getMusicBase(QString id)
+MusicBase *MusicRepertory::get(QString id)
 {
     for (int i = 0; i < m_musicBaseList.count(); i++) {
         if (m_musicBaseList.at(i)->getId() == id) {
@@ -26,7 +26,7 @@ MusicBase *MusicRepertory::getMusicBase(QString id)
     return NULL;
 }
 
-void MusicRepertory::addMusicBase(MusicBase *musicBase)
+void MusicRepertory::add(MusicBase *musicBase)
 {
     if (musicBase == NULL)
         return;
@@ -37,7 +37,7 @@ void MusicRepertory::addMusicBase(MusicBase *musicBase)
     this->save();
 }
 
-void MusicRepertory::rmMusicBase(QString id)
+void MusicRepertory::remove(QString id)
 {
     for (int i = 0; i < m_musicBaseList.count(); i++) {
         if (m_musicBaseList.at(i)->getId() == id) {
@@ -49,7 +49,7 @@ void MusicRepertory::rmMusicBase(QString id)
     this->save();
 }
 
-void MusicRepertory::updateMusicBase(MusicBase *musicBase)
+void MusicRepertory::update(MusicBase *musicBase)
 {
     if (musicBase == NULL)
         return;
