@@ -17,6 +17,8 @@ public:
     void remove(QString id);
     void update(MusicBase *musicBase);
 
+    void add(QStringList pathNameList);
+
 private:
     MusicListService();
 

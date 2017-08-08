@@ -1,4 +1,5 @@
 #include "MusicListService.h"
+#include <QFile>
 
 MusicListService * MusicListService::_instance = NULL;
 
@@ -38,5 +39,18 @@ void MusicListService::remove(QString id)
 void MusicListService::update(MusicBase *musicBase)
 {
     MusicRepertory::instance()->update(musicBase);
+}
+
+void MusicListService::add(QStringList pathNameList)
+{
+    QFile file;
+    for (int i = 0; i < pathNameList.count(); i++) {
+        file.setFileName(pathNameList.at(i));
+        if ( file.exists() == true ) {
+            MusicBase* musicBase = new MusicBase();
+            musicBase->setPathName(pathNameList.at(i));
+            this->add(musicBase);
+        }
+    }
 }
 
