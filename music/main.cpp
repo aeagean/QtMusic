@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
 
     MusicRepertory::instance();
-    MusicListService::instance()->add(QStringList("/home/strong/Music"));
+//    MusicListService::instance()->add(QStringList("/home/strong/Music"));
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));

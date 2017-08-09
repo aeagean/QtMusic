@@ -25,13 +25,15 @@ public:
     bool getIsAllSelected();
     void setIsAllSelected(bool status);
 
+private:
+    QStringList getSelectedPathNameList(); /*Selected music path*/
+
 public slots:
     void reload();
 
 signals:
     void statusChanged();
     void statusPathNameChanged();
-    void isAllSelectedChanged();
 
 private:
     QString m_pathName;
