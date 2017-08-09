@@ -11,30 +11,25 @@ FileBrowserService *FileBrowserService::instance()
     return _instance;
 }
 
-QFileInfoList FileBrowserService::getInfoPathList(QString path)
-{
-    m_fileInfoList.clear();
-    return m_fileInfoList = m_dir.entryInfoList();
-}
-
 QStringList FileBrowserService::getCurrentPathNameList()
 {
-    QStringList list;
-//    list.append("disk");
-    list.append(m_dir.path().split("/", QString::SkipEmptyParts));
-    return list;
+    return m_dir.entryList();
 }
 
-QStringList FileBrowserService::getNamePathList(QString path)
+QString FileBrowserService::getCurrentFullPathNameList()
 {
-    m_namePathList.clear();
-    m_dir.setPath(path);
-    m_fileInfoList.clear();
-    m_fileInfoList = m_dir.entryInfoList();
-    for (int i = 0; i < m_fileInfoList.count(); i++) {
-        m_namePathList.append(m_fileInfoList.at(i).fileName());
-    }
-    return m_namePathList;
+    return m_dir.path();
+}
+
+void FileBrowserService::cdNextPath(QString currentPathName)
+{
+    if (m_dir.exists() == true )
+        m_dir.cd(currentPathName);
+}
+
+void FileBrowserService::cdPath(QString pathName)
+{
+    m_dir.cd(pathName);
 }
 
 FileBrowserService::FileBrowserService()

@@ -5,20 +5,28 @@
 
 FileBrowserListModel::FileBrowserListModel()
 {
+    this->reload();
     connect(this, SIGNAL(statusChanged()), this, SLOT(reload()));
 }
 
-void FileBrowserListModel::changedPath(int index)
+void FileBrowserListModel::cdNextPath(QString pathName)
 {
-    if (index == 0) {
-        this->setPathName("/");
+    FileBrowserService::instance()->cdNextPath(pathName);
+    emit statusChanged();
+}
+
+void FileBrowserListModel::cdPath(int index)
+{
+    QString pathName;
+    for (int i = 0; i < index+1; i++) {
+        if (getDisplayPathNameList().at(i) == "")
+            pathName += ("/");
+        else
+            pathName += (getDisplayPathNameList().at(i) + "/");
     }
-    else {
-        while (m_pathNameList.size() > index) {
-            m_pathNameList.removeLast();
-        }
-        this->setPathName("/"+m_pathNameList.join("/"));
-    }
+
+    FileBrowserService::instance()->cdPath(pathName);
+    emit statusChanged();
 }
 
 void FileBrowserListModel::save()
@@ -26,20 +34,22 @@ void FileBrowserListModel::save()
     MusicListService::instance()->add(this->getSelectedPathNameList());
 }
 
-QString FileBrowserListModel::getPathName()
+QStringList FileBrowserListModel::getDisplayPathNameList()
 {
-    return m_pathName;
+    return m_displayPathNameList;
 }
 
-void FileBrowserListModel::setPathName(QString pathName)
+void FileBrowserListModel::setDisplayPathNameList()
 {
-    m_pathName = pathName;
-    emit statusChanged();
-}
+    QString fullPathName = FileBrowserService::instance()->getCurrentFullPathNameList();
+    QDir dir(fullPathName);
+    this->m_displayPathNameList.clear();
+    do {
+        this->m_displayPathNameList.insert(0, dir.dirName());
+    }
+    while (dir.cdUp());
 
-QStringList FileBrowserListModel::getPathNameList()
-{
-    return m_pathNameList;
+    emit statusPathNameChanged();
 }
 
 bool FileBrowserListModel::getIsAllSelected()
@@ -60,7 +70,7 @@ QStringList FileBrowserListModel::getSelectedPathNameList()
     for (int i = 0; i < this->size(); i++) {
         FileBrowserModel* model = this->getItemList().at(i);
         if (model->getIsSelected() == true) {
-            selectedPathNameList.append(this->getPathName() + "/" +model->getPathName());
+            selectedPathNameList.append(model->getPathName());
         }
     }
 
@@ -69,18 +79,20 @@ QStringList FileBrowserListModel::getSelectedPathNameList()
 
 void FileBrowserListModel::reload()
 {
-    this->m_pathNameList.clear();
-    QStringList pathList = FileBrowserService::instance()->getNamePathList(m_pathName);
-    m_pathNameList = FileBrowserService::instance()->getCurrentPathNameList();
+    QStringList currentPathNameList = FileBrowserService::instance()->getCurrentPathNameList();
     QList<FileBrowserModel* > modelList = QList<FileBrowserModel* >();
 
-    for (int i = 0; i < pathList.count(); i++) {
+    for (int i = 0; i < currentPathNameList.count(); i++) {
+        QString fullPathName = FileBrowserService::instance()->getCurrentFullPathNameList();
+
         FileBrowserModel* model = new FileBrowserModel(this);
-        model->setPathName(pathList.at(i));
+        model->setPathName(fullPathName);
+        model->setDisplayPathName(currentPathNameList.at(i));
         model->setIsSelected(this->getIsAllSelected());
         modelList.append(model);
     }
 
     notifyResetList(modelList);
-    emit statusPathNameChanged();
+
+    this->setDisplayPathNameList();
 }

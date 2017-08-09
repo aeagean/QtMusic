@@ -3,6 +3,7 @@
 
 #include "ObjectListModel.h"
 #include "FileBrowserModel.h"
+#include <QDir>
 
 class FileBrowserListModel: public ObjectListModel<FileBrowserModel>
 {
@@ -10,17 +11,15 @@ class FileBrowserListModel: public ObjectListModel<FileBrowserModel>
 public:
     FileBrowserListModel();
 
-    Q_PROPERTY(QString pathName READ getPathName WRITE setPathName NOTIFY statusChanged)
-    Q_PROPERTY(QStringList pathNameList READ getPathNameList NOTIFY statusPathNameChanged)
+    Q_PROPERTY(QStringList displayPathNameList READ getDisplayPathNameList NOTIFY statusPathNameChanged)
     Q_PROPERTY(bool isAllSelected READ getIsAllSelected WRITE setIsAllSelected NOTIFY statusChanged)
 
-    Q_INVOKABLE void changedPath(int index);
+    Q_INVOKABLE void cdNextPath(QString pathName);
+    Q_INVOKABLE void cdPath(int index);
     Q_INVOKABLE void save();
 
-    QString getPathName();
-    void setPathName(QString pathName);
-
-    QStringList getPathNameList();
+    QStringList getDisplayPathNameList();
+    void setDisplayPathNameList();
 
     bool getIsAllSelected();
     void setIsAllSelected(bool status);
@@ -36,9 +35,9 @@ signals:
     void statusPathNameChanged();
 
 private:
-    QString m_pathName;
-    QStringList m_pathNameList;
+    QStringList m_displayPathNameList;
     bool m_isAllSelected;
+    QDir m_dir;
 };
 
 #endif // FILEBROWSERLISTMODEL_H
