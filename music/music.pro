@@ -19,13 +19,15 @@ SOURCES += main.cpp \
 
 RESOURCES += qml.qrc \
     resource.qrc
+
 INCLUDEPATH +=  Model/MediaPlayControl \
                 Model/FileBrowser \
-                Model/MusicInfo \
-                Service/FileBrowser \
-                Infrastructure/domain \
+                Model/MusicInfo
+INCLUDEPATH +=  Service/FileBrowser \
+                Service/Music
+INCLUDEPATH +=  Infrastructure/domain \
                 Infrastructure/Repertory \
-                Domain/
+                Domain
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

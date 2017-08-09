@@ -1,12 +1,13 @@
 #include "MusicListService.h"
 #include <QFile>
+#include <QDir>
+#include <QDebug>
+
+const QString musicFilter[] = {
+    "*.mp3"
+};
 
 MusicListService * MusicListService::_instance = NULL;
-
-MusicListService::MusicListService()
-{
-
-}
 
 MusicListService *MusicListService::instance()
 {
@@ -16,9 +17,24 @@ MusicListService *MusicListService::instance()
     return _instance;
 }
 
+MusicListService::MusicListService()
+{
+    m_musicDir.setNameFilters(this->getMusicTypeFilter());
+    m_musicDir.setSorting(QDir::Name);
+}
+
+QStringList MusicListService::getMusicTypeFilter()
+{
+    QStringList filterList;
+    for (int i = 0; i < sizeof(musicFilter)/sizeof(musicFilter[0]); i++)
+        filterList.append(musicFilter[i]);
+
+    return filterList;
+}
+
 QList<MusicBase *> MusicListService::getList()
 {
-
+    return MusicRepertory::instance()->getList();
 }
 
 MusicBase *MusicListService::get(QString id)
@@ -41,14 +57,15 @@ void MusicListService::update(MusicBase *musicBase)
     MusicRepertory::instance()->update(musicBase);
 }
 
-void MusicListService::add(QStringList pathNameList)
-{
-    QFile file;
-    for (int i = 0; i < pathNameList.count(); i++) {
-        file.setFileName(pathNameList.at(i));
-        if ( file.exists() == true ) {
+void MusicListService::add(QStringList pathList)
+{    
+    for (int i = 0; i < pathList.count(); i++) {
+        m_musicDir.setPath(pathList.at(i));
+
+        for (int j = 0; j < m_musicDir.entryList().count(); j++) {
             MusicBase* musicBase = new MusicBase();
-            musicBase->setPathName(pathNameList.at(i));
+            musicBase->setPathName(m_musicDir.entryList().at(j));
+            qDebug()<<musicBase->getPathName();
             this->add(musicBase);
         }
     }
