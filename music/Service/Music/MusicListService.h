@@ -27,6 +27,7 @@ private:
 private:
     static MusicListService* _instance;
     QDir m_musicDir;
+    QFileInfo m_fileInfo;
 };
 
 #endif // MUSICLISTSERVICE_H

@@ -5,6 +5,7 @@ MusicBase::MusicBase()
     m_id = "";
     m_name = QString::fromUtf8("Undefined");
     m_pathName = "/";
+    m_musicName = QString::fromUtf8("Undefined");
 }
 
 MusicBase::~MusicBase()
@@ -30,6 +31,16 @@ QString MusicBase::getName()
 void MusicBase::setName(QString name)
 {
     m_name = name;
+}
+
+QString MusicBase::getMusicName()
+{
+    return m_musicName;
+}
+
+void MusicBase::setMusicName(QString musicName)
+{
+    m_musicName = musicName;
 }
 
 QString MusicBase::getPathName()

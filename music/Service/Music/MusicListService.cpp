@@ -63,9 +63,12 @@ void MusicListService::add(QStringList pathList)
         m_musicDir.setPath(pathList.at(i));
 
         for (int j = 0; j < m_musicDir.entryList().count(); j++) {
+            m_fileInfo.setFile(m_musicDir.entryList().at(j));
+
             MusicBase* musicBase = new MusicBase();
-            musicBase->setPathName(m_musicDir.entryList().at(j));
-            qDebug()<<musicBase->getPathName();
+            musicBase->setName(m_fileInfo.fileName());
+            musicBase->setMusicName(m_fileInfo.baseName());
+            musicBase->setPathName(m_fileInfo.filePath()); /*filePath() Returns the name of the file, excluding the path*/
             this->add(musicBase);
         }
     }
