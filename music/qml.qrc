@@ -1,18 +1,20 @@
 <RCC>
     <qresource prefix="/">
         <file>Qml/MainWin/content/MusicPlayControlBar.qml</file>
-        <file>Qml/MainWin/main.qml</file>
         <file>Qml/MainWin/content/VolumeControlBar.qml</file>
-        <file>Qml/Common/SliderBar/SliderBar.qml</file>
         <file>Qml/MainWin/content/ProgressBar.qml</file>
+        <file>Qml/MainWin/main.qml</file>
+        <file>Qml/Common/SliderBar/SliderBar.qml</file>
         <file>Qml/Common/DoubleTriangle.qml</file>
         <file>Qml/Common/PreOrNextButton.qml</file>
         <file>Qml/Common/StartOrStopButton.qml</file>
         <file>Qml/Common/Triangle.qml</file>
-        <file>Qml/MainWin/content/FileBrowser/FileBrowser.qml</file>
-        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserBase.qml</file>
-        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserTitleBar.qml</file>
-        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserSimpleFileList.qml</file>
-        <file>Qml/MainWin/content/FileBrowser/content/FileBrowserBaseDelegate.qml</file>
+        <file>Qml/FileBrowserWin/FileBrowser.qml</file>
+        <file>Qml/FileBrowserWin/content/FileBrowserBase.qml</file>
+        <file>Qml/FileBrowserWin/content/FileBrowserTitleBar.qml</file>
+        <file>Qml/FileBrowserWin/content/FileBrowserSimpleFileList.qml</file>
+        <file>Qml/FileBrowserWin/content/FileBrowserBaseDelegate.qml</file>
+        <file>Qml/MusicSearchWin/MusicSearchBar.qml</file>
+        <file>Qml/MusicSearchWin/MusicSearchRelsultsListView.qml</file>
     </qresource>
 </RCC>
