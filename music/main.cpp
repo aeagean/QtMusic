@@ -9,6 +9,7 @@
 
 #include "MusicRepertory.h"
 #include "MusicListService.h"
+#include "MusicSearchService.h"
 
 #include <QDebug>
 
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
 
     MusicRepertory::instance();
+    MusicSearchService::instance();
 //    MusicListService::instance()->add(QStringList("/home/strong/Music"));
 
     QQmlApplicationEngine engine;

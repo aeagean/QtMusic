@@ -15,7 +15,10 @@ SOURCES += main.cpp \
     Service/Music/MusicListService.cpp \
     Domain/MusicBase.cpp \
     Model/MusicInfo/MusicListModel.cpp \
-    Model/MusicInfo/MusicModel.cpp
+    Model/MusicInfo/MusicModel.cpp \
+    Service/Music/MusicSearchService.cpp \
+    Model/MusicSearch/MusicSearchList.cpp \
+    Model/MusicSearch/MusicSearch.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
@@ -49,4 +52,7 @@ HEADERS += \
     Service/Music/MusicListService.h \
     Domain/MusicBase.h \
     Model/MusicInfo/MusicListModel.h \
-    Model/MusicInfo/MusicModel.h
+    Model/MusicInfo/MusicModel.h \
+    Service/Music/MusicSearchService.h \
+    Model/MusicSearch/MusicSearchList.h \
+    Model/MusicSearch/MusicSearch.h
