@@ -2,14 +2,14 @@ import QtQuick 2.0
 
 Rectangle {
     signal valueSig(real val)
-    signal pressedSig();
     property real value: 0.5 //0.1-1.0
-
-//    width: parent.width; height: parent.height
     color: "#00000000"
 
-    onWidthChanged: sliderId.x = value*(width)-width/40
-    onValueChanged: sliderId.x = value*(rectBackgroundId.width)-rectBackgroundId.width/40
+    onWidthChanged: sliderId.x = value*(width)
+    onValueChanged: {
+        if (sliderId.isHMSliding == false)
+            sliderId.x = value*(width- sliderId.width)
+    }
 
     Rectangle {
         id: rectBackgroundId
@@ -20,25 +20,24 @@ Rectangle {
 
     Rectangle {
         id: sliderId
-        width: parent.width/20; height: parent.height
-        color: "#00000000"
-        x: value*(rectBackgroundId.width)-rectBackgroundId.width/40
-
-        Rectangle {
-            anchors.centerIn: parent
-            width: parent.width/2; height: parent.height/1.1
-            color: "#474747"
-        }
+        property bool isHMSliding: false
+        anchors.verticalCenter: parent.verticalCenter
+        width: parent.width/12; height: width//parent.height
+        radius: width/2
+        color: "#474747"
 
         MouseArea {
             id: mouseAreaId
             anchors.fill: parent
             drag.target : sliderId
             drag.axis: Drag.XAxis
-            drag.minimumX : -parent.width/2
-            drag.maximumX : rectBackgroundId.width - parent.width/2
-            onPressed: pressedSig()
-            onReleased: valueSig((sliderId.x+sliderId.width/2)/rectBackgroundId.width)
+            drag.minimumX : 0
+            drag.maximumX : rectBackgroundId.width - sliderId.width
+            onPressed: sliderId.isHMSliding = true
+            onReleased: {
+                sliderId.isHMSliding = false
+                valueSig(sliderId.x/(rectBackgroundId.width- sliderId.width))
+            }
         }
     }
 }
