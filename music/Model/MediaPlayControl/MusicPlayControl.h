@@ -14,7 +14,7 @@ public:
     Q_PROPERTY(double progressBarValue READ getProgressBarValue WRITE setProgressBarValue NOTIFY statusChanged)  /*0 - 1*/
     Q_PROPERTY(QString leftTimeStr READ getLeftTimeStr NOTIFY statusChanged)
     Q_PROPERTY(QString rightTimeStr READ getRightTimeStr NOTIFY statusChanged)
-
+    Q_PROPERTY(QString musicName READ getMusicName NOTIFY statusChanged)
 
     bool getIsStart();
     void setIsStart(bool status);
@@ -25,6 +25,9 @@ public:
     double getProgressBarValue();
     void setProgressBarValue(double progressBarValue);
 
+    QString getMusicName();
+    void setMusicName(QString musicName);
+
 signals:
     void statusChanged();
 
@@ -33,6 +36,7 @@ private:
     double m_progressBarValue;
     QTime m_leftTime;
     QTime m_rightTime;
+    QString m_musicName;
 };
 
 #endif // MUSICPLAYCONTROL_H

@@ -17,11 +17,16 @@ Window {
     Column {
         anchors.fill: parent
 
-        Item { width: parent.width; height: 24*parent.height/30}
+        TopMusicTitle {
+            width: parent.width; height: 1.5*parent.height/30
+            musicName: musicPlayControl.musicName
+        }
+
+        Item { width: parent.width; height: 22.5*parent.height/30 }
 
         ProgressBar {
             musicPlayControlModel: musicPlayControl
-            width: parent.width; height: parent.height/30
+            width: parent.width; height: 1*parent.height/30
         }
 
         MusicPlayControlBar {
@@ -36,6 +41,7 @@ Window {
 
     FileBrowser {
         anchors.fill: parent
+        visible: false
     }
 
     // data control

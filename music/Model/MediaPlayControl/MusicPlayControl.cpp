@@ -8,7 +8,7 @@ MusicPlayControl::MusicPlayControl()
     m_progressBarValue = 0;
     m_leftTime = QTime(0, 0, 0);
     m_rightTime = QTime(0, 0, 0);
-
+    m_musicName = "Music";
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
 }
 
@@ -54,6 +54,17 @@ void MusicPlayControl::setProgressBarValue(double progressBarValue)
     this->setPosition(progressBarValue*this->duration());
     if (this->position() == this->duration())
         this->m_isStart = false;
+    emit statusChanged();
+}
+
+QString MusicPlayControl::getMusicName()
+{
+    return m_musicName;
+}
+
+void MusicPlayControl::setMusicName(QString musicName)
+{
+    m_musicName = musicName;
     emit statusChanged();
 }
 

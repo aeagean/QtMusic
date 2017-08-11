@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Qml/MainWin/content/MusicPlayControlBar.qml</file>
-        <file>Qml/MainWin/content/VolumeControlBar.qml</file>
         <file>Qml/MainWin/content/ProgressBar.qml</file>
         <file>Qml/MainWin/main.qml</file>
         <file>Qml/Common/SliderBar/SliderBar.qml</file>
@@ -17,5 +16,6 @@
         <file>Qml/MusicSearchWin/MusicSearchBar.qml</file>
         <file>Qml/MusicSearchWin/MusicSearchRelsultsListView.qml</file>
         <file>Qml/MainWin/content/BottomBar.qml</file>
+        <file>Qml/MainWin/content/TopMusicTitle.qml</file>
     </qresource>
 </RCC>
