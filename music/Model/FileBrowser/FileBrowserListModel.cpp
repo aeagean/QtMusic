@@ -17,15 +17,7 @@ void FileBrowserListModel::cdNextPath(QString pathName)
 
 void FileBrowserListModel::cdPath(int index)
 {
-    QString pathName;
-    for (int i = 0; i < index+1; i++) {
-        if (getDisplayPathNameList().at(i) == "")
-            pathName += ("/");
-        else
-            pathName += (getDisplayPathNameList().at(i) + "/");
-    }
-
-    FileBrowserService::instance()->cdPath(pathName);
+    FileBrowserService::instance()->cdPath(index);
     emit statusChanged();
 }
 

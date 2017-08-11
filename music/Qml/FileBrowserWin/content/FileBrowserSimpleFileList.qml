@@ -24,7 +24,7 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: fileBrowserListModel.cdPath(index)
+                onClicked: fileBrowserListModel.cdPath(listViewId.count - index)
             }
         }
     }

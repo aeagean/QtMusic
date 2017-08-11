@@ -14,6 +14,8 @@ public:
     QString getCurrentFullPathNameList();
     void cdNextPath(QString currentPathName);
     void cdPath(QString pathName);
+    void cdPath(int indexPath); /*/home/user/music*/
+                         /*index->  2    1     0 */
 
 private:
     FileBrowserService();

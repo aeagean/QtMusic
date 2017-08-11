@@ -32,9 +32,16 @@ void FileBrowserService::cdPath(QString pathName)
     m_dir.cd(pathName);
 }
 
+void FileBrowserService::cdPath(int indexPath)
+{
+    while(--indexPath) {
+        m_dir.cdUp();
+    }
+}
+
 FileBrowserService::FileBrowserService()
 {
-    m_dir.setPath("/");
+    m_dir.setPath(QDir::rootPath());
     m_dir.setFilter(QDir::Dirs|QDir::NoDotAndDotDot);
     m_dir.setSorting(QDir::Name);
 }

@@ -4,7 +4,7 @@ import "content"
 
 Rectangle {
     id: fileBrowser
-    visible: false
+//    visible: false
     anchors.fill: parent
 
     MouseArea { anchors.fill: parent }

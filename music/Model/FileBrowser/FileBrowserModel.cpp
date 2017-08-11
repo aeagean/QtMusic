@@ -1,10 +1,11 @@
 #include "FileBrowserModel.h"
+#include <QDir>
 
 FileBrowserModel::FileBrowserModel(QObject *parent):
     BaseItemModel(parent)
 {
     m_pathName = "";
-    m_displayPathName = "/";
+    m_displayPathName = QDir::rootPath();
     m_isSelected = false;
 }
 
