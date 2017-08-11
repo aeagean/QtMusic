@@ -24,6 +24,5 @@ Rectangle {
 
     FileBrowserListModel {
         id: fileBrowserListModel
-        pathName: "/"
     }
 }

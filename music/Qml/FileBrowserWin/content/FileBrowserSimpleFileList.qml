@@ -11,22 +11,7 @@ Rectangle {
         width: parent.width; height: parent.height
         clip: true
         orientation: ListView.Horizontal
-        model: fileBrowserListModel.pathNameList
-        header: Item {
-            width: headerTextId.width; height: rectId.height
-
-            Text {
-                id: headerTextId
-                anchors.centerIn: parent
-                color: "#474747"
-                text: "    "+"disk"+"    >"
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: fileBrowserListModel.changedPath(0)
-            }
-        }
+        model: fileBrowserListModel.displayPathNameList
         delegate: Item {
             width: textId.width /*+ 10*/; height: rectId.height
 
@@ -34,12 +19,12 @@ Rectangle {
                 id: textId
                 anchors.centerIn: parent
                 color: "#474747"
-                text: "    "+modelData+"    >"
+                text:  modelData === "" ? "    "+"disk"+"    >" : "    "+modelData+"    >"
             }
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: fileBrowserListModel.changedPath(index+1)
+                onClicked: fileBrowserListModel.cdPath(index)
             }
         }
     }

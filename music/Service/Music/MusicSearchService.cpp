@@ -34,13 +34,13 @@ void MusicSearchService::readJson()
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     val = file.readAll();
     file.close();
-    qDebug() << val;
+
     QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
     QJsonObject sett2 = d.object();
     QJsonValue value = sett2.value(QString("appName"));
-    qDebug() << value;
+
     QJsonObject item = value.toObject();
-    qDebug() << tr("QJsonObject of description: ") << item;
+    qDebug() << item;
 
     /* incase of string value get value and convert into string*/
     qDebug() << tr("QJsonObject[appName] of description: ") << item["description"];

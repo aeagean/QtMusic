@@ -12,9 +12,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    fileBrowserListModel.pathName = fileBrowserListModel.pathName + "/" + modelData.pathName
-                }
+                onClicked: fileBrowserListModel.cdNextPath(modelData.displayPathName)
             }
         }
 
@@ -28,14 +26,12 @@ Item {
                 elide: Text.ElideMiddle
                 color: "black"
                 font.pixelSize: parent.height/3.5
-                text: modelData.pathName
+                text: modelData.displayPathName
             }
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    fileBrowserListModel.pathName = fileBrowserListModel.pathName + "/" + modelData.pathName
-                }
+                onClicked: fileBrowserListModel.cdNextPath(modelData.displayPathName)
             }
         }
 
