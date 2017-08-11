@@ -23,7 +23,7 @@ QList<MusicBase *> MusicSearchService::getMusicSearchList(QString musicName)
 
 MusicSearchService::MusicSearchService()
 {
-readJson();
+    readJson();
 }
 
 void MusicSearchService::readJson()

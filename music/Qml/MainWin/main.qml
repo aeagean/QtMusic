@@ -17,14 +17,20 @@ Window {
     Column {
         anchors.fill: parent
 
+        Item { width: parent.width; height: 24*parent.height/30}
+
         ProgressBar {
             musicPlayControlModel: musicPlayControl
             width: parent.width; height: parent.height/30
         }
 
         MusicPlayControlBar {
-            width: parent.width; height: parent.height/10
+            width: parent.width; height: 3*parent.height/30
             musicPlayControlModel: musicPlayControl
+        }
+
+        BottomBar {
+            width: parent.width; height: 2*parent.height/30
         }
     }
 

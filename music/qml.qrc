@@ -16,5 +16,6 @@
         <file>Qml/FileBrowserWin/content/FileBrowserBaseDelegate.qml</file>
         <file>Qml/MusicSearchWin/MusicSearchBar.qml</file>
         <file>Qml/MusicSearchWin/MusicSearchRelsultsListView.qml</file>
+        <file>Qml/MainWin/content/BottomBar.qml</file>
     </qresource>
 </RCC>

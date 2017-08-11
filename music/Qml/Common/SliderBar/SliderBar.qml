@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     signal valueSig(real val)
+    signal pressedSig();
     property real value: 0.5 //0.1-1.0
 
 //    width: parent.width; height: parent.height
@@ -36,6 +37,7 @@ Rectangle {
             drag.axis: Drag.XAxis
             drag.minimumX : -parent.width/2
             drag.maximumX : rectBackgroundId.width - parent.width/2
+            onPressed: pressedSig()
             onReleased: valueSig((sliderId.x+sliderId.width/2)/rectBackgroundId.width)
         }
     }

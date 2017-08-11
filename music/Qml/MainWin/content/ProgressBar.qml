@@ -15,7 +15,7 @@ Item {
                 anchors.centerIn: parent
                 font.pixelSize: parent.height/1.8
                 color: "#474747"
-                text: "00:00"
+                text: musicPlayControl.leftTimeStr
             }
         }
 
@@ -23,8 +23,8 @@ Item {
             id: sliderBarId
             width: 3*parent.width/5; height: parent.height
             color: "#00000000"
-            value: 1
-            onValueSig: value = val
+            value: musicPlayControl.progressBarValue
+            onValueSig: musicPlayControl.progressBarValue = val
         }
 
         Rectangle {
@@ -34,7 +34,7 @@ Item {
                 anchors.centerIn: parent
                 font.pixelSize: parent.height/1.8
                 color: "#474747"
-                text: "03:00"
+                text: musicPlayControl.rightTimeStr
             }
         }
     }
