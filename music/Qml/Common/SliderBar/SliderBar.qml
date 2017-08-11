@@ -11,6 +11,13 @@ Rectangle {
             sliderId.x = value*(width- sliderId.width)
     }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: mouseX <= (rectBackgroundId.width - sliderId.width) ?
+                       valueSig(mouseX/(rectBackgroundId.width- sliderId.width)) :
+                       valueSig((rectBackgroundId.width - sliderId.width)/(rectBackgroundId.width- sliderId.width))
+    }
+
     Rectangle {
         id: rectBackgroundId
         width: parent.width; height: parent.height/5
@@ -40,4 +47,5 @@ Rectangle {
             }
         }
     }
+
 }

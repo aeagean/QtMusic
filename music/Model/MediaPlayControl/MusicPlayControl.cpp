@@ -14,9 +14,7 @@ MusicPlayControl::MusicPlayControl()
 
 bool MusicPlayControl::getIsStart()
 {
-    if (this->position() == this->duration()) m_isStart = false;
-    else
-        return m_isStart;
+    return m_isStart;
 }
 
 void MusicPlayControl::setIsStart(bool status)
@@ -54,6 +52,9 @@ double MusicPlayControl::getProgressBarValue()
 void MusicPlayControl::setProgressBarValue(double progressBarValue)
 {
     this->setPosition(progressBarValue*this->duration());
+    if (this->position() == this->duration())
+        this->m_isStart = false;
     emit statusChanged();
 }
+
 

@@ -10,7 +10,7 @@ Item {
 
         Rectangle {
             width: parent.width/5; height: parent.height
-            color: "lightblue"
+            color: "#00000000"
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: parent.height/1.8
@@ -29,7 +29,7 @@ Item {
 
         Rectangle {
             width: parent.width/5; height: parent.height
-            color: "lightblue"
+            color: "#00000000"
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: parent.height/1.8
