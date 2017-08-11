@@ -34,9 +34,7 @@ void FileBrowserService::cdPath(QString pathName)
 
 void FileBrowserService::cdPath(int indexPath)
 {
-    while(--indexPath) {
-        m_dir.cdUp();
-    }
+    while(--indexPath) m_dir.cdUp();
 }
 
 FileBrowserService::FileBrowserService()
