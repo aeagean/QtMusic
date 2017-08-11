@@ -19,7 +19,7 @@ Rectangle {
                 anchors.verticalCenterOffset: -parent.height/20
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: "#474747"
-                text: "<"
+                text: "＜"
                 font.pixelSize: parent.height
             }
 
