@@ -22,7 +22,9 @@ Window {
             musicName: musicPlayControl.musicName
         }
 
-        Item { width: parent.width; height: 22.5*parent.height/30 }
+        LyricsDisplayArea {
+            width: parent.width; height: 22.5*parent.height/30
+        }
 
         ProgressBar {
             musicPlayControlModel: musicPlayControl
@@ -39,6 +41,10 @@ Window {
         }
     }
 
+
+    // -------------------------------------------------------------------------------
+
+    /*RileBrowser win*/
     FileBrowser {
         anchors.fill: parent
         visible: false

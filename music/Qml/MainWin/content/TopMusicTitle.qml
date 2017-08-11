@@ -9,7 +9,7 @@ Rectangle {
     Text {
         text: musicName
         anchors.centerIn: parent
-        font.pixelSize: parent.height/1.5
+        font.pixelSize: parent.height/1.8
     }
 
     Rectangle {

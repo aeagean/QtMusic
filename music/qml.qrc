@@ -17,5 +17,6 @@
         <file>Qml/MusicSearchWin/MusicSearchRelsultsListView.qml</file>
         <file>Qml/MainWin/content/BottomBar.qml</file>
         <file>Qml/MainWin/content/TopMusicTitle.qml</file>
+        <file>Qml/MainWin/content/LyricsDisplayArea.qml</file>
     </qresource>
 </RCC>
