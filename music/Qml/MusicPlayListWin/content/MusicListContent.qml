@@ -20,7 +20,7 @@ ListView {
 
         MouseArea {
             anchors.fill: parent
-            onClicked:
+            onClicked: musicPlayListModel.currentPlayMusicId = modelData.id
         }
     }
 }
