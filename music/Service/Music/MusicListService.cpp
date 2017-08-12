@@ -45,16 +45,30 @@ MusicBase *MusicListService::get(QString id)
 void MusicListService::add(MusicBase *musicBase)
 {
     MusicRepertory::instance()->add(musicBase);
+    emit listChanged();
 }
 
 void MusicListService::remove(QString id)
 {
     MusicRepertory::instance()->remove(id);
+    emit listChanged();
 }
 
 void MusicListService::update(MusicBase *musicBase)
 {
     MusicRepertory::instance()->update(musicBase);
+    emit listChanged();
+}
+
+bool MusicListService::isExistMusic(QString pathName)
+{
+    QList<MusicBase *> musicList = MusicRepertory::instance()->getList();
+    for (int i = 0; i < musicList.count(); i++) {
+        if (musicList.at(i)->getPathName() == pathName)
+            return true;
+    }
+
+    return false;
 }
 
 void MusicListService::add(QStringList pathList)
@@ -65,11 +79,13 @@ void MusicListService::add(QStringList pathList)
         for (int j = 0; j < m_musicDir.entryList().count(); j++) {
             m_fileInfo.setFile(m_musicDir.entryList().at(j));
 
-            MusicBase* musicBase = new MusicBase();
-            musicBase->setName(m_fileInfo.fileName());
-            musicBase->setMusicName(m_fileInfo.baseName());
-            musicBase->setPathName(m_fileInfo.filePath()); /*filePath() Returns the name of the file, excluding the path*/
-            this->add(musicBase);
+            if (isExistMusic(m_fileInfo.filePath()) == false) {
+                MusicBase* musicBase = new MusicBase();
+                musicBase->setName(m_fileInfo.fileName());
+                musicBase->setMusicName(m_fileInfo.baseName());
+                musicBase->setPathName(m_fileInfo.filePath()); /*filePath() Returns the name of the file, excluding the path*/
+                this->add(musicBase);
+            }
         }
     }
 }

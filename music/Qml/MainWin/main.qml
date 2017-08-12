@@ -3,10 +3,12 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtMultimedia 5.0
 import MusicPlayControl 1.0
+import MusicPlayListModel 1.0
 import "../Common"
 import "content"
 import "../Common/SliderBar"
 import "../FileBrowserWin"
+import "../MusicPlayListWin"
 
 Window {
     visible: true
@@ -44,15 +46,28 @@ Window {
 
     // -------------------------------------------------------------------------------
 
-    /*RileBrowser win*/
+    /*FileBrowser win*/
     FileBrowser {
+        id: fileBrowser
         anchors.fill: parent
         visible: false
     }
+
+    MusicPlayListWin {
+        id: musicPlayListWin
+        anchors.fill: parent
+        visible: false
+    }
+
+    // ---------------------------------------------------------------
 
     // data control
     MusicPlayControl {
         id: musicPlayControl
         isStart: false
+    }
+
+    MusicPlayListModel {
+        id: musicPlayListModel
     }
 }

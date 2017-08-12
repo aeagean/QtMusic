@@ -59,10 +59,13 @@ QStringList FileBrowserListModel::getSelectedPathNameList()
 {
     QStringList selectedPathNameList;
 
+    QDir dir;
     for (int i = 0; i < this->size(); i++) {
         FileBrowserModel* model = this->getItemList().at(i);
         if (model->getIsSelected() == true) {
-            selectedPathNameList.append(model->getPathName());
+            dir.setPath(model->getPathName());
+            dir.cd(model->getDisplayPathName());
+            selectedPathNameList.append(dir.path());
         }
     }
 

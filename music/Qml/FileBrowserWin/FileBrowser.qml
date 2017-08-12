@@ -13,15 +13,19 @@ Rectangle {
         anchors.fill: parent
 
         FileBrowserTitleBar {
-            width: parent.width; height: parent.height/17
+            width: parent.width; height: 1.5*parent.height/20
             onBacked: fileBrowser.visible = false
         }
 
-        FileBrowserSimpleFileList { width: parent.width; height: parent.height/19}
+        FileBrowserSimpleFileList { width: parent.width; height: 1*parent.height/20 }
 
-        FileBrowserBase { width: parent.width; height: parent.height - parent.height/17 - parent.height/19}
+        FileBrowserBase { width: parent.width; height: 16*parent.height/20 }
+
+        FileBrowserAddBtnBar { width: parent.width; height: (20-16-1-1.5)*parent.height/20}
     }
 
+    //-------------------------------------------------------
+    // data
     FileBrowserListModel {
         id: fileBrowserListModel
     }

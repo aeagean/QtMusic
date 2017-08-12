@@ -18,5 +18,11 @@
         <file>Qml/MainWin/content/BottomBar.qml</file>
         <file>Qml/MainWin/content/TopMusicTitle.qml</file>
         <file>Qml/MainWin/content/LyricsDisplayArea.qml</file>
+        <file>Qml/Common/Button/BaseButton.qml</file>
+        <file>Qml/FileBrowserWin/content/FileBrowserAddBtnBar.qml</file>
+        <file>Qml/MusicPlayListWin/MusicPlayListWin.qml</file>
+        <file>Qml/Common/MenuBar/MenuBar.qml</file>
+        <file>Qml/Common/MenuBar/MenuBaseBar.qml</file>
+        <file>Qml/MusicPlayListWin/content/MusicListContent.qml</file>
     </qresource>
 </RCC>

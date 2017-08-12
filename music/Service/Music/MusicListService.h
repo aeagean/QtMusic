@@ -14,11 +14,15 @@ public:
 
     MusicBase *get(QString id);
 
+    /*Gets the list of paths where the music is located.*/
+    void add(QStringList pathList);
     void add(MusicBase *musicBase);
     void remove(QString id);
     void update(MusicBase *musicBase);
+    bool isExistMusic(QString pathName);
 
-    void add(QStringList pathList); //Gets the list of paths where the music is located.
+signals:
+    void listChanged();
 
 private:
     MusicListService();

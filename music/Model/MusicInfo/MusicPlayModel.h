@@ -2,12 +2,14 @@
 #define MUSICMODEL_H
 
 #include "BaseItemModel.h"
+#include "MusicBase.h"
 
-class MusicModel : public BaseItemModel
+class MusicPlayModel : public BaseItemModel
 {
     Q_OBJECT
 public:
-    MusicModel();
+    MusicPlayModel(QObject* parent = NULL);
+    MusicPlayModel(MusicBase* musicBase, QObject* parent = NULL);
 
     Q_PROPERTY(QString id READ getId NOTIFY statusChanged)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY statusChanged)
@@ -18,7 +20,7 @@ public:
     QString getName();
     void setName(QString name);
 
-    void operator=(const MusicModel& model);
+    void operator=(const MusicPlayModel& model);
 
 signals:
     void statusChanged();

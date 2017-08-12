@@ -3,13 +3,15 @@
 #include <QDir>
 #include <iostream>
 #include <QtQml>
+
 #include "MusicPlayControl.h"
-#include "FileBrowserService.h"
 #include "FileBrowserListModel.h"
+#include "MusicPlayListModel.h"
 
 #include "MusicRepertory.h"
 #include "MusicListService.h"
 #include "MusicSearchService.h"
+#include "FileBrowserService.h"
 
 #include <QDebug>
 
@@ -19,6 +21,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
     qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
+    qmlRegisterType<MusicPlayListModel>("MusicPlayListModel", 1, 0, "MusicPlayListModel");
 
     MusicRepertory::instance();
     MusicSearchService::instance();
