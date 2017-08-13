@@ -11,10 +11,7 @@ public:
     MusicPlayListModel();
     virtual ~MusicPlayListModel();
 
-    Q_PROPERTY(QString currentPlayMusicId READ getCurrentPlayMusicId WRITE setCurrentPlayMusicId NOTIFY statusChanged)
-
-    QString getCurrentPlayMusicId();
-    void setCurrentPlayMusicId(QString musicId);
+    Q_INVOKABLE void setCurrentPlayMusicId(QString musicId);
 
 signals:
     void statusChanged();
@@ -23,7 +20,7 @@ private slots:
     void reload();
 
 private:
-    QString m_currentPlayMusicId;
+
 };
 
 #endif // MUSICLISTMODEL_H

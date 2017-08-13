@@ -1,15 +1,27 @@
+#include "MusicListService.h"
 #include "MusicPlayControl.h"
-#include <QMediaPlaylist>
 
 MusicPlayControl::MusicPlayControl()
 {
-    this->setMedia(QMediaContent(QUrl("qrc:/Resource/Imiss.mp3")));
-    this->setVolume(100);
+    m_playList = MusicListService::instance()->getMediaPlayList();
     m_progressBarValue = 0;
     m_leftTime = QTime(0, 0, 0);
     m_rightTime = QTime(0, 0, 0);
     m_musicName = "Music";
+
+    this->setPlaylist(this->m_playList);
+    this->setVolume(100);
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
+}
+
+void MusicPlayControl::nextMusic()
+{
+    m_playList->next();
+}
+
+void MusicPlayControl::prevMusic()
+{
+    m_playList->previous();
 }
 
 bool MusicPlayControl::getIsStart()

@@ -13,6 +13,7 @@ Item {
             PreOrNextButton {
                 direction: "left"
                 anchors.centerIn: parent
+                onClickedChanged: musicPlayControlModel.prevMusic();
             }
         }
 
@@ -29,6 +30,7 @@ Item {
             PreOrNextButton {
                 direction: "right"
                 anchors.centerIn: parent
+                onClickedChanged: musicPlayControlModel.nextMusic()
             }
         }
     }

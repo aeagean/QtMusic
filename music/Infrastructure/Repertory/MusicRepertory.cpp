@@ -33,7 +33,8 @@ void MusicRepertory::add(MusicBase *musicBase)
 
     musicBase->setId(generateRandomId());
     m_musicBaseList.append(musicBase);
-
+    qDebug()<<musicBase->getPathName();
+    m_mediaPlayList->addMedia(QMediaContent(QUrl::fromLocalFile(musicBase->getPathName())));
     this->save();
 }
 
@@ -67,9 +68,14 @@ void MusicRepertory::update(MusicBase *musicBase)
     this->save();
 }
 
+QMediaPlaylist *MusicRepertory::getMediaPlayList()
+{
+    return m_mediaPlayList;
+}
+
 MusicRepertory::MusicRepertory()
 {
-
+    m_mediaPlayList = new QMediaPlaylist();
 }
 
 void MusicRepertory::save()

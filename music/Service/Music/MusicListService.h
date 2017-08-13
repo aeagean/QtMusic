@@ -21,6 +21,9 @@ public:
     void update(MusicBase *musicBase);
     bool isExistMusic(QString pathName);
 
+    QMediaPlaylist *getMediaPlayList();
+    void setCurrentPlayMusicId(QString musicId);
+
 signals:
     void listChanged();
 

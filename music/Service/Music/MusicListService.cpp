@@ -71,19 +71,36 @@ bool MusicListService::isExistMusic(QString pathName)
     return false;
 }
 
+QMediaPlaylist *MusicListService::getMediaPlayList()
+{
+    return MusicRepertory::instance()->getMediaPlayList();
+}
+
+void MusicListService::setCurrentPlayMusicId(QString musicId)
+{
+    QList<MusicBase *> musicBaseList = this->getList();
+    for (int i = 0; i < musicBaseList.count(); i++) {
+        if (musicBaseList.at(i)->getId() == musicId) {
+            this->getMediaPlayList()->setCurrentIndex(i);
+            break;
+        }
+    }
+}
+
 void MusicListService::add(QStringList pathList)
 {    
     for (int i = 0; i < pathList.count(); i++) {
         m_musicDir.setPath(pathList.at(i));
 
         for (int j = 0; j < m_musicDir.entryList().count(); j++) {
-            m_fileInfo.setFile(m_musicDir.entryList().at(j));
+            m_fileInfo.setFile(m_musicDir.path(), m_musicDir.entryList().at(j));
 
             if (isExistMusic(m_fileInfo.filePath()) == false) {
                 MusicBase* musicBase = new MusicBase();
                 musicBase->setName(m_fileInfo.fileName());
                 musicBase->setMusicName(m_fileInfo.baseName());
-                musicBase->setPathName(m_fileInfo.filePath()); /*filePath() Returns the name of the file, excluding the path*/
+                /*filePath() Returns the name of the file, excluding the path*/
+                musicBase->setPathName(m_fileInfo.filePath());
                 this->add(musicBase);
             }
         }

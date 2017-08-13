@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "MusicBase.h"
+#include <QMediaPlaylist>
 
 class MusicRepertory : public QObject
 {
@@ -16,6 +17,7 @@ public:
     void add(MusicBase *musicBase);
     void remove(QString id);
     void update(MusicBase *musicBase);
+    QMediaPlaylist* getMediaPlayList();
 
 private:
     MusicRepertory();
@@ -28,6 +30,7 @@ private:
 private:
     static MusicRepertory* _instance;
     QList<MusicBase* > m_musicBaseList;
+    QMediaPlaylist* m_mediaPlayList;
 };
 
 #endif // MUSICREPERTORY_H

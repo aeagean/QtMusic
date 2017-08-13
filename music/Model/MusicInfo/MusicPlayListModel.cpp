@@ -13,15 +13,9 @@ MusicPlayListModel::~MusicPlayListModel()
 
 }
 
-QString MusicPlayListModel::getCurrentPlayMusicId()
-{
-    return m_currentPlayMusicId;
-}
-
 void MusicPlayListModel::setCurrentPlayMusicId(QString musicId)
 {
-    m_currentPlayMusicId = musicId;
-    emit statusChanged();
+    MusicListService::instance()->setCurrentPlayMusicId(musicId);
 }
 
 void MusicPlayListModel::reload()
