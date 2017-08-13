@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../Common/Button"
 
 Rectangle {
+    signal btnAdded()
     width: parent.width; height: parent.height
 
     Rectangle { width: parent.width; height: parent.height/30; color: "#f2f2f2" }
@@ -15,7 +16,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: fileBrowserListModel.save()
+        onClicked: btnAdded()
         onPressed: {
             textId.color = "white"
             parent.color = "#CDC9C9"

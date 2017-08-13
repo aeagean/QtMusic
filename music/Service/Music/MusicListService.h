@@ -13,6 +13,7 @@ public:
     QList<MusicBase *> getList();
 
     MusicBase *get(QString id);
+    MusicBase *get(int index);
 
     /*Gets the list of paths where the music is located.*/
     void add(QStringList pathList);

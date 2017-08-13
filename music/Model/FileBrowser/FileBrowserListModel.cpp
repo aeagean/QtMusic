@@ -5,6 +5,7 @@
 
 FileBrowserListModel::FileBrowserListModel()
 {
+    m_isAllSelected = false;
     this->reload();
     connect(this, SIGNAL(statusChanged()), this, SLOT(reload()));
 }

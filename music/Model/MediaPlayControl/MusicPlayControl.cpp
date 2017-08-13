@@ -12,6 +12,7 @@ MusicPlayControl::MusicPlayControl()
     this->setPlaylist(this->m_playList);
     this->setVolume(100);
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
+    connect(this->m_playList, SIGNAL(currentIndexChanged(int)), this, SIGNAL(statusChanged()));
 }
 
 void MusicPlayControl::nextMusic()
@@ -71,13 +72,13 @@ void MusicPlayControl::setProgressBarValue(double progressBarValue)
 
 QString MusicPlayControl::getMusicName()
 {
+    MusicBase* musicBase = MusicListService::instance()->get(m_playList->currentIndex());
+    if (musicBase != NULL)
+        m_musicName = musicBase->getMusicName();
+    else
+        m_musicName = "Music";
     return m_musicName;
 }
 
-void MusicPlayControl::setMusicName(QString musicName)
-{
-    m_musicName = musicName;
-    emit statusChanged();
-}
 
 

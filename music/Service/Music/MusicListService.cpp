@@ -42,6 +42,14 @@ MusicBase *MusicListService::get(QString id)
     return MusicRepertory::instance()->get(id);
 }
 
+MusicBase *MusicListService::get(int index)
+{
+    if (index >= 0 && index < getList().count())
+        return this->getList().at(index);
+    else
+        return NULL;
+}
+
 void MusicListService::add(MusicBase *musicBase)
 {
     MusicRepertory::instance()->add(musicBase);

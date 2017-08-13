@@ -16,6 +16,7 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 color: "red"
+                btnText: "Add"
                 onIsClicked: fileBrowser.visible = true
             }
             BaseButton {
@@ -31,6 +32,7 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 color: "green"
+                btnText: "List"
                 onIsClicked: musicPlayListWin.visible = true
             }
         }

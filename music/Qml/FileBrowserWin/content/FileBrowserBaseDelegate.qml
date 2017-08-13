@@ -39,7 +39,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             width: 0.7*parent.width/6; height: width
             radius: width/2
-            color: modelData.isSelected ? "lightblue" : "red"
+            color: modelData.isSelected ? "red" : "lightblue"
             MouseArea {
                 anchors.fill: parent
                 onClicked: modelData.isSelected = !modelData.isSelected

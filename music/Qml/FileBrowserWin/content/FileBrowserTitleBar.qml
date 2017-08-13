@@ -20,7 +20,7 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: "#474747"
                 text: "＜"
-                font.pixelSize: parent.height
+                font.pixelSize: parent.height/2.5
             }
 
             MouseArea {
@@ -35,7 +35,7 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 color: "black"
-                text: "选择文件夹"
+                text: "Select folder"
                 font.pixelSize: parent.height/2.5
             }
         }

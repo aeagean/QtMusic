@@ -21,7 +21,13 @@ Rectangle {
 
         FileBrowserBase { width: parent.width; height: 16*parent.height/20 }
 
-        FileBrowserAddBtnBar { width: parent.width; height: (20-16-1-1.5)*parent.height/20}
+        FileBrowserAddBtnBar {
+            width: parent.width; height: (20-16-1-1.5)*parent.height/20
+            onBtnAdded: {
+                fileBrowser.visible = false
+                fileBrowserListModel.save()
+            }
+        }
     }
 
     //-------------------------------------------------------
