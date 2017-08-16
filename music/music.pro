@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     Model/MusicSearch/MusicSearchList.cpp \
     Model/MusicSearch/MusicSearch.cpp \
     Model/MusicInfo/MusicPlayListModel.cpp \
-    Model/MusicInfo/MusicPlayModel.cpp
+    Model/MusicInfo/MusicPlayModel.cpp \
+    Infrastructure/domain/DomainObject.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
@@ -55,4 +56,8 @@ HEADERS += \
     Model/MusicSearch/MusicSearchList.h \
     Model/MusicSearch/MusicSearch.h \
     Model/MusicInfo/MusicPlayListModel.h \
-    Model/MusicInfo/MusicPlayModel.h
+    Model/MusicInfo/MusicPlayModel.h \
+    Utils/JsonListConvertorImpl.h \
+    Infrastructure/domain/DomainObject.h \
+    Infrastructure/domain/JsonListConvertor.h \
+    Infrastructure/domain/JsonListConvertorImpl.h

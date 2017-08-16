@@ -2,12 +2,18 @@
 #define MUSICBASE_H
 
 #include <QString>
+#include <QObject>
+#include "DomainObject.h"
 
-class MusicBase
+class MusicBase : public QObject, public DomainObject
 {
+    Q_OBJECT
 public:
     MusicBase();
     virtual ~MusicBase();
+
+    void fromJson(const QJsonValue *data);
+    QJsonValue *toJson();
 
     QString getId();
     void setId(QString id);

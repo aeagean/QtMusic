@@ -1,4 +1,5 @@
 #include "MusicBase.h"
+#include <QJsonObject>
 
 MusicBase::MusicBase()
 {
@@ -11,6 +12,27 @@ MusicBase::MusicBase()
 MusicBase::~MusicBase()
 {
 
+}
+
+void MusicBase::fromJson(const QJsonValue *data)
+{
+    QJsonObject jsonObj = data->toObject();
+    m_id = jsonObj.value("id").toString();
+    m_name = jsonObj.value("name").toString();
+    m_musicName = jsonObj.value("musicName").toString();
+    m_pathName = jsonObj.value("pathName").toString();
+}
+
+QJsonValue *MusicBase::toJson()
+{
+    QJsonObject jsonObj;
+    jsonObj.insert("id", getId());
+    jsonObj.insert("name", getName());
+    jsonObj.insert("musicName", getMusicName());
+    jsonObj.insert("pathName", getPathName());
+    QJsonValue* jsonValue = new QJsonValue(jsonObj);
+
+    return jsonValue;
 }
 
 QString MusicBase::getId()
