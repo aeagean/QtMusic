@@ -9,7 +9,6 @@ ListView {
     Rectangle {
         width: listViewId.width; height: listViewId.height/8
 
-
         Text {
             text: modelData.name
             x: parent.width/20;
@@ -21,6 +20,12 @@ ListView {
         MouseArea {
             anchors.fill: parent
             onClicked: musicPlayListModel.setCurrentPlayMusicId(modelData.id)
+        }
+
+        Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width; height: 1
+            color: "#d5d5d5"
         }
     }
 }
