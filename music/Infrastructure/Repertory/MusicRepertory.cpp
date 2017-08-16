@@ -76,6 +76,8 @@ QMediaPlaylist *MusicRepertory::getMediaPlayList()
 MusicRepertory::MusicRepertory()
 {
     m_mediaPlayList = new QMediaPlaylist();
+
+
 }
 
 void MusicRepertory::save()

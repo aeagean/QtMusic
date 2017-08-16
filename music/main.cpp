@@ -30,5 +30,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
 
+
+
     return app.exec();
 }
