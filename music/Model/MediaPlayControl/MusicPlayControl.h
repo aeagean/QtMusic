@@ -10,7 +10,8 @@ class MusicPlayControl : public QMediaPlayer
 {
     Q_OBJECT
 public:
-    MusicPlayControl();
+    static MusicPlayControl* instance();
+
     Q_PROPERTY(QString musicName READ getMusicName NOTIFY statusChanged)
     Q_PROPERTY(bool isStart READ getIsStart WRITE setIsStart NOTIFY statusChanged)  
     Q_PROPERTY(double progressBarValue READ getProgressBarValue WRITE setProgressBarValue NOTIFY statusChanged)  /*0 - 1*/
@@ -38,6 +39,10 @@ signals:
     void statusChanged();
 
 private:
+    MusicPlayControl();
+
+private:
+    static MusicPlayControl* _instance;
     bool m_isStart;
     double m_progressBarValue;
     QMediaPlaylist* m_playList;

@@ -2,7 +2,7 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtMultimedia 5.0
-import MusicPlayControl 1.0
+//import MusicPlayControl 1.0
 import MusicPlayListModel 1.0
 import "../Common"
 import "content"
@@ -60,12 +60,6 @@ Window {
     }
 
     // ---------------------------------------------------------------
-
-    // data control
-    MusicPlayControl {
-        id: musicPlayControl
-        isStart: false
-    }
 
     MusicPlayListModel {
         id: musicPlayListModel

@@ -1,9 +1,12 @@
 #include "MusicListService.h"
 #include "MusicPlayControl.h"
 
+MusicPlayControl* MusicPlayControl::_instance = NULL;
+
 MusicPlayControl::MusicPlayControl()
 {
     m_playList = MusicListService::instance()->getMediaPlayList();
+    m_isStart = false;
     m_progressBarValue = 0;
     m_leftTime = QTime(0, 0, 0);
     m_rightTime = QTime(0, 0, 0);
@@ -16,6 +19,14 @@ MusicPlayControl::MusicPlayControl()
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
     connect(this->m_playList, SIGNAL(currentIndexChanged(int)), this, SIGNAL(statusChanged()));
     connect(this->m_playList, SIGNAL(playbackModeChanged(QMediaPlaylist::PlaybackMode)), this, SIGNAL(statusChanged()));
+}
+
+MusicPlayControl *MusicPlayControl::instance()
+{
+    if (_instance == NULL) {
+        _instance = new MusicPlayControl();
+    }
+    return _instance;
 }
 
 void MusicPlayControl::nextMusic()

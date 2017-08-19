@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
+//    qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
     qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
     qmlRegisterType<MusicPlayListModel>("MusicPlayListModel", 1, 0, "MusicPlayListModel");
     qmlRegisterType<MusicLyricsListModel>("MusicLyricsListModel", 1, 0, "MusicLyricsListModel");
@@ -29,9 +29,8 @@ int main(int argc, char *argv[])
     MusicSearchService::instance();
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("musicPlayControl", MusicPlayControl::instance());
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
-
-
 
     return app.exec();
 }

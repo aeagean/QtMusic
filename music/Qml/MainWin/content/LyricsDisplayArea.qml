@@ -11,6 +11,8 @@ Rectangle {
         width: parent.width; height: parent.height
         clip: true
         model: musicLyricsListModel
+        currentIndex: musicLyricsListModel.currentIndex
+
         delegate:
         Rectangle {
             width: listViewId.width; height: listViewId.height/10
