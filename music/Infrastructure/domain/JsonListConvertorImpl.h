@@ -1,6 +1,7 @@
 #include "JsonListConvertor.h"
 #include <QObject>
 #include <cassert>
+#include <QJsonArray>
 #include <QDebug>
 
 template <class T>
@@ -10,21 +11,21 @@ JsonListConvertor<T>::JsonListConvertor()
 }
 
 template <class T>
-QList<T *> JsonListConvertor<T>::toList(const QJsonObject *jsonList)
+QList<T *> JsonListConvertor<T>::toList(const QJsonValue jsonList)
 {
     QList<T *> resultList;
 
-    if (jsonList == NULL || jsonList->type != QJsonObject_Array) {
-        qDebug("Error: JsonListConvertor::toList(): param is NULL or not Array!");
+    if (jsonList.isArray() == false) {
+        qDebug("Error: JsonListConvertor::toList(): param is not Array!");
         return resultList;
     }
 
-    for (int i = 0; i < QJsonObject_GetArraySize((QJsonObject*)jsonList); i++) {
+    for (int i = 0; i < jsonList.toArray().count(); i++) {
         T * item = new T();
 
         DomainObject *domainObj = dynamic_cast<DomainObject *>(item);
         assert(domainObj);
-        domainObj->fromJson(QJsonObject_GetArrayItem((QJsonObject*)jsonList, i));
+        domainObj->fromJson(jsonList.toArray().at(i).toObject());
 
         resultList.append(item);
     }
@@ -33,21 +34,20 @@ QList<T *> JsonListConvertor<T>::toList(const QJsonObject *jsonList)
 }
 
 template <class T>
-QList<T> JsonListConvertor<T>::toListWithValue(const QJsonObject *jsonList)
+QList<T> JsonListConvertor<T>::toListWithValue(const QJsonValue jsonList)
 {
     QList<T> resultList;
 
-    if (jsonList == NULL || jsonList->type != QJsonObject_Array) {
+    if (jsonList.isArray() == false) {
         qDebug("Error: JsonListConvertor::toListWithValue(): param is NULL or not Array!");
         return resultList;
     }
 
-    for (int i = 0; i < QJsonObject_GetArraySize((QJsonObject*)jsonList); i++) {
+    for (int i = 0; i < jsonList.toArray().count(); i++) {
         T item;
 
         DomainObject& domainObj = dynamic_cast<DomainObject&>(item);
-//        assert(domainObj);
-        domainObj.fromJson(QJsonObject_GetArrayItem((QJsonObject*)jsonList, i));
+        domainObj.fromJson(jsonList.toArray().at(i).toObject());
 
         resultList.append(item);
     }
@@ -56,7 +56,7 @@ QList<T> JsonListConvertor<T>::toListWithValue(const QJsonObject *jsonList)
 }
 
 template <class T>
-QList<QObject *> JsonListConvertor<T>::toObjectList(const QJsonObject *jsonList)
+QList<QObject *> JsonListConvertor<T>::toObjectList(const QJsonValue jsonList)
 {
     QList<T *> list = this->toList(jsonList);
     QList<QObject *> resultList;
@@ -69,29 +69,27 @@ QList<QObject *> JsonListConvertor<T>::toObjectList(const QJsonObject *jsonList)
 }
 
 template <class T>
-QJsonObject * JsonListConvertor<T>::toJson(QList<T *> list)
+QJsonValue JsonListConvertor<T>::toJson(QList<T *> list)
 {
-    QJsonObject *jsonList = QJsonObject_CreateArray();
-
+    QJsonArray jsonList;
     for (int i = 0; i < list.size(); i++) {
         DomainObject *domainObj = dynamic_cast<DomainObject *>(list.at(i));
         if (domainObj)
-            QJsonObject_AddItemToArray(jsonList, domainObj->toJson());
+            jsonList.append(domainObj->toJson());
     }
 
-    return jsonList;
+    return QJsonValue(jsonList);
 }
 
 template <class T>
-QJsonObject* JsonListConvertor<T>::toJsonWithValue(QList<T> list)
+QJsonValue JsonListConvertor<T>::toJsonWithValue(QList<T> list)
 {
-    QJsonObject *jsonList = QJsonObject_CreateArray();
+    QJsonArray jsonList;
 
     for (int i = 0; i < list.size(); i++) {
         DomainObject& domainObj = dynamic_cast<DomainObject&>((DomainObject&)list.at(i));
-//        if (domainObj)
-        QJsonObject_AddItemToArray(jsonList, domainObj.toJson());
+        jsonList.append(domainObj.toJson());
     }
 
-    return jsonList;
+    return QJsonValue(jsonList);
 }

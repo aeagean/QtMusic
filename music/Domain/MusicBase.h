@@ -12,8 +12,8 @@ public:
     MusicBase();
     virtual ~MusicBase();
 
-    void fromJson(const QJsonValue *data);
-    QJsonValue *toJson();
+    void fromJson(const QJsonObject data);
+    QJsonObject toJson();
 
     QString getId();
     void setId(QString id);

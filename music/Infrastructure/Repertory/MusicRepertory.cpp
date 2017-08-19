@@ -1,4 +1,8 @@
 #include "MusicRepertory.h"
+#include "JsonListConvertor.h"
+
+#include <QJsonDocument>
+#include <QFile>
 
 MusicRepertory * MusicRepertory::_instance = NULL;
 
@@ -82,7 +86,17 @@ MusicRepertory::MusicRepertory()
 
 void MusicRepertory::save()
 {
+    JsonListConvertor<MusicBase> convertor;
+    QJsonValue jsonValue = convertor.toJson(m_musicBaseList);
 
+    QFile saveFile("save.json");
+    saveFile.open(QIODevice::WriteOnly);
+
+    QJsonObject jsonObj;
+    jsonObj.insert("musicInfoArray", jsonValue.toArray());
+
+    QJsonDocument saveDoc(jsonObj);
+    saveFile.write(saveDoc.toJson());
 }
 
 void MusicRepertory::reload()

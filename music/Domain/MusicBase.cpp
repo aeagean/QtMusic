@@ -14,25 +14,23 @@ MusicBase::~MusicBase()
 
 }
 
-void MusicBase::fromJson(const QJsonValue *data)
+void MusicBase::fromJson(const QJsonObject data)
 {
-    QJsonObject jsonObj = data->toObject();
-    m_id = jsonObj.value("id").toString();
-    m_name = jsonObj.value("name").toString();
-    m_musicName = jsonObj.value("musicName").toString();
-    m_pathName = jsonObj.value("pathName").toString();
+    m_id = data.value("id").toString();
+    m_name = data.value("name").toString();
+    m_musicName = data.value("musicName").toString();
+    m_pathName = data.value("pathName").toString();
 }
 
-QJsonValue *MusicBase::toJson()
+QJsonObject MusicBase::toJson()
 {
-    QJsonObject jsonObj;
-    jsonObj.insert("id", getId());
-    jsonObj.insert("name", getName());
-    jsonObj.insert("musicName", getMusicName());
-    jsonObj.insert("pathName", getPathName());
-    QJsonValue* jsonValue = new QJsonValue(jsonObj);
+    QJsonObject data;
+    data.insert("id", getId());
+    data.insert("name", getName());
+    data.insert("musicName", getMusicName());
+    data.insert("pathName", getPathName());
 
-    return jsonValue;
+    return data;
 }
 
 QString MusicBase::getId()

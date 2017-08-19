@@ -1,7 +1,7 @@
 #ifndef CPP_JSON_LIST_CONVERTOR_H
 #define CPP_JSON_LIST_CONVERTOR_H
 
-#include <QJsonObject>
+#include <QJsonValue>
 #include <QList>
 #include "DomainObject.h"
 
@@ -12,12 +12,12 @@ class JsonListConvertor
 public:
     JsonListConvertor();
 
-    QList<T *> toList(const QJsonObject *jsonList);
-    QList<T> toListWithValue(const QJsonObject *jsonList);
-    QList<QObject *> toObjectList(const QJsonObject *jsonList);
+    QList<T *> toList(const QJsonValue jsonList);
+    QList<T> toListWithValue(const QJsonValue jsonList);
+    QList<QObject *> toObjectList(const QJsonValue jsonList);
 
-    QJsonObject * toJson(QList<T *> list);
-    QJsonObject * toJsonWithValue(QList<T> list);
+    QJsonValue toJson(QList<T *> list);
+    QJsonValue toJsonWithValue(QList<T> list);
 };
 
 #include "JsonListConvertorImpl.h"
