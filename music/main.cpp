@@ -26,6 +26,10 @@ int main(int argc, char *argv[])
     MusicRepertory::instance();
     MusicSearchService::instance();
 
+    QFile file("/home/strong/Music/Lyric/不朽之罪.lrc");
+    file.open(QIODevice::ReadOnly);
+    qDebug()<<file.readAll().data();
+
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
 
