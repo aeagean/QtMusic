@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
 
     MusicRepertory::instance();
     MusicSearchService::instance();
-//    MusicListService::instance()->add(QStringList("/home/strong/Music"));
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));
