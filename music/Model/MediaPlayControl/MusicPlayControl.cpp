@@ -9,10 +9,12 @@ MusicPlayControl::MusicPlayControl()
     m_rightTime = QTime(0, 0, 0);
     m_musicName = "Music";
 
+    m_playList->setPlaybackMode(QMediaPlaylist::Loop);
     this->setPlaylist(this->m_playList);
     this->setVolume(100);
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
     connect(this->m_playList, SIGNAL(currentIndexChanged(int)), this, SIGNAL(statusChanged()));
+    connect(this->m_playList, SIGNAL(playbackModeChanged(QMediaPlaylist::PlaybackMode)), this, SIGNAL(statusChanged()));
 }
 
 void MusicPlayControl::nextMusic()
@@ -23,6 +25,22 @@ void MusicPlayControl::nextMusic()
 void MusicPlayControl::prevMusic()
 {
     m_playList->previous();
+}
+
+void MusicPlayControl::changedPlaybackMode()
+{
+    if (m_playList->playbackMode() == QMediaPlaylist::CurrentItemInLoop) {
+        m_playList->setPlaybackMode(QMediaPlaylist::Loop);
+    }
+    else if (m_playList->playbackMode() == QMediaPlaylist::Loop) {
+        m_playList->setPlaybackMode(QMediaPlaylist::Random);
+    }
+    else if (m_playList->playbackMode() == QMediaPlaylist::Random) {
+        m_playList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    }
+    else {
+        m_playList->setPlaybackMode(QMediaPlaylist::Loop);
+    }
 }
 
 bool MusicPlayControl::getIsStart()
@@ -55,6 +73,22 @@ QString MusicPlayControl::getRightTimeStr()
     m_rightTime.setHMS(0, 0, 0);
     m_rightTime = m_rightTime.addMSecs(this->duration());
     return m_rightTime.toString("mm:ss");
+}
+
+QString MusicPlayControl::getPlaybackModeStr()
+{
+    if (m_playList->playbackMode() == QMediaPlaylist::CurrentItemInLoop) {
+        return "Once";
+    }
+    else if (m_playList->playbackMode() == QMediaPlaylist::Loop) {
+        return "Loop";
+    }
+    else if (m_playList->playbackMode() == QMediaPlaylist::Random) {
+        return "Random";
+    }
+    else {
+        return "Loop";
+    }
 }
 
 double MusicPlayControl::getProgressBarValue()

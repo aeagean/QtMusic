@@ -79,9 +79,13 @@ QMediaPlaylist *MusicRepertory::getMediaPlayList()
 
 MusicRepertory::MusicRepertory()
 {
+    reload();
+
     m_mediaPlayList = new QMediaPlaylist();
-
-
+    for (int i = 0; i < m_musicBaseList.count(); i++) {
+        MusicBase* musicBase = m_musicBaseList.at(i);
+        m_mediaPlayList->addMedia(QMediaContent(QUrl::fromLocalFile(musicBase->getPathName())));
+    }
 }
 
 void MusicRepertory::save()
@@ -101,7 +105,15 @@ void MusicRepertory::save()
 
 void MusicRepertory::reload()
 {
+    QFile saveFile("save.json");
+    saveFile.open(QIODevice::ReadOnly);
+    QByteArray saveData = saveFile.readAll();
 
+    QJsonDocument saveDoc(QJsonDocument::fromJson(saveData));
+
+    QJsonArray jsonList = saveDoc.object().value("musicInfoArray").toArray();
+    JsonListConvertor<MusicBase> convertor;
+    m_musicBaseList = convertor.toList(jsonList);
 }
 
 QString MusicRepertory::generateRandomId()

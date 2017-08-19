@@ -25,6 +25,8 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 color: "green"
+                btnText: musicPlayControl.playbackModeStr
+                onIsClicked: musicPlayControl.changedPlaybackMode()
             }
             BaseButton {
                 width: parent.width/5; height: parent.height
