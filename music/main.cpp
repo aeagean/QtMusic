@@ -7,6 +7,7 @@
 #include "MusicPlayControl.h"
 #include "FileBrowserListModel.h"
 #include "MusicPlayListModel.h"
+#include "MusicLyricsListModel.h"
 
 #include "MusicRepertory.h"
 #include "MusicListService.h"
@@ -22,13 +23,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<MusicPlayControl>("MusicPlayControl", 1, 0, "MusicPlayControl");
     qmlRegisterType<FileBrowserListModel>("FileBrowserListModel", 1, 0, "FileBrowserListModel");
     qmlRegisterType<MusicPlayListModel>("MusicPlayListModel", 1, 0, "MusicPlayListModel");
+    qmlRegisterType<MusicLyricsListModel>("MusicLyricsListModel", 1, 0, "MusicLyricsListModel");
 
     MusicRepertory::instance();
     MusicSearchService::instance();
-
-    QFile file("/home/strong/Music/Lyric/不朽之罪.lrc");
-    file.open(QIODevice::ReadOnly);
-    qDebug()<<file.readAll().data();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Qml/MainWin/main.qml")));

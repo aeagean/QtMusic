@@ -12,7 +12,7 @@ MusicPlayControl::MusicPlayControl()
     m_playList->setPlaybackMode(QMediaPlaylist::Loop);
     this->setPlaylist(this->m_playList);
     this->setVolume(100);
-    this->setNotifyInterval(10);
+    this->setNotifyInterval(100);
     connect(this, SIGNAL(positionChanged(qint64)), this, SIGNAL(statusChanged()));
     connect(this->m_playList, SIGNAL(currentIndexChanged(int)), this, SIGNAL(statusChanged()));
     connect(this->m_playList, SIGNAL(playbackModeChanged(QMediaPlaylist::PlaybackMode)), this, SIGNAL(statusChanged()));
