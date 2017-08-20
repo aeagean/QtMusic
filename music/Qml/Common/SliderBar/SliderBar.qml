@@ -7,8 +7,9 @@ Rectangle {
 
     onWidthChanged: sliderId.x = value*(width)
     onValueChanged: {
-        if (sliderId.isHMSliding == false)
+        if (sliderId.isHMSliding == false) {
             sliderId.x = value*(width- sliderId.width)
+        }
     }
 
     MouseArea {
@@ -23,6 +24,13 @@ Rectangle {
         width: parent.width; height: parent.height/5
         anchors.centerIn: parent
         color: "#e9e9e9"
+    }
+
+    Rectangle {
+        id: progressId
+        width: sliderId.x*1.05; height: parent.height/5
+        anchors.verticalCenter: parent.verticalCenter
+        color: "#474747"
     }
 
     Rectangle {
