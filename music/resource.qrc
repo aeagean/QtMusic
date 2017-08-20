@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>Resource/Imiss.mp3</file>
+        <file>Resource/MusicPicture/Add.png</file>
+        <file>Resource/MusicPicture/Folder.png</file>
+        <file>Resource/MusicPicture/Fork.png</file>
+        <file>Resource/MusicPicture/LeftArrow.png</file>
+        <file>Resource/MusicPicture/Loop.png</file>
+        <file>Resource/MusicPicture/More.png</file>
+        <file>Resource/MusicPicture/NotoSelection.png</file>
+        <file>Resource/MusicPicture/Once.png</file>
+        <file>Resource/MusicPicture/PlayList.png</file>
+        <file>Resource/MusicPicture/Random.png</file>
+        <file>Resource/MusicPicture/YellowSelection.png</file>
     </qresource>
 </RCC>
