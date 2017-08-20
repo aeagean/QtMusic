@@ -9,7 +9,8 @@ Item {
         Rectangle {
             width: parent.width/6; height: parent.height
             Image {
-                scale: 0.4
+                width: 0.4*(parent.width > parent.height ? parent.height:parent.width);
+                height: width
                 anchors.centerIn: parent
                 source: "qrc:/Resource/MusicPicture/Folder.png"
             }
@@ -44,7 +45,8 @@ Item {
             radius: width/2
 
             Image {
-                scale: 0.4
+                width: 0.4*(parent.width > parent.height ? parent.height:parent.width);
+                height: width
                 anchors.centerIn: parent
                 source: modelData.isSelected ? "qrc:/Resource/MusicPicture/YellowSelection.png" :
                                                "qrc:/Resource/MusicPicture/NotoSelection.png"

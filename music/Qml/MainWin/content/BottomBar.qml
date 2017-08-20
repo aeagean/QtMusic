@@ -16,8 +16,9 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 Image {
+                    width: 0.48*(parent.width > parent.height ? parent.height:parent.width);
+                    height: width
                     anchors.centerIn: parent
-                    scale: 0.5
                     source: "qrc:/Resource/MusicPicture/PlayList.png"
                 }
                 onIsClicked: musicPlayListWin.visible = true
@@ -30,8 +31,9 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 Image {
+                    width: 0.5*(parent.width > parent.height ? parent.height:parent.width);
+                    height: width
                     anchors.centerIn: parent
-                    scale: 0.5
                     source: "qrc:/Resource/MusicPicture/"+musicPlayControl.playbackModeStr+".png"
                 }
                 onIsClicked: musicPlayControl.changedPlaybackMode()
@@ -43,8 +45,9 @@ Rectangle {
             BaseButton {
                 width: parent.width/5; height: parent.height
                 Image {
+                    width: 0.5*(parent.width > parent.height ? parent.height:parent.width);
+                    height: width
                     anchors.centerIn: parent
-                    scale: 0.48
                     source: "qrc:/Resource/MusicPicture/Add.png"
                 }
                 onIsClicked: fileBrowser.visible = true

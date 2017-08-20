@@ -18,7 +18,8 @@ Rectangle {
                 onIsClicked: musicPlayListWin.visible = false
 
                 Image {
-                    scale: 0.5
+                    width: 0.4*(parent.width > parent.height ? parent.height:parent.width);
+                    height: width
                     anchors.centerIn: parent
                     source: "qrc:/Resource/MusicPicture/LeftArrow.png"
                 }

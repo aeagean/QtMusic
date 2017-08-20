@@ -16,7 +16,8 @@ Rectangle {
             width: parent.width/7; height: parent.height
 
             Image {
-                scale: 0.5
+                width: 0.4*(parent.width > parent.height ? parent.height:parent.width);
+                height: width
                 anchors.centerIn: parent
                 source: "qrc:/Resource/MusicPicture/LeftArrow.png"
             }
