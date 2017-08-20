@@ -7,6 +7,10 @@ const QString musicFilter[] = {
     "*.mp3"
 };
 
+const QString lyricFilter[] = {
+    "*.lrc"
+};
+
 MusicListService * MusicListService::_instance = NULL;
 
 MusicListService *MusicListService::instance()
@@ -28,6 +32,15 @@ QStringList MusicListService::getMusicTypeFilter()
     QStringList filterList;
     for (int i = 0; i < sizeof(musicFilter)/sizeof(musicFilter[0]); i++)
         filterList.append(musicFilter[i]);
+
+    return filterList;
+}
+
+QStringList MusicListService::getlyrcTypeFilter()
+{
+    QStringList filterList;
+    for (int i = 0; i < sizeof(lyricFilter)/sizeof(lyricFilter[0]); i++)
+        filterList.append(lyricFilter[i]);
 
     return filterList;
 }
@@ -93,6 +106,30 @@ void MusicListService::setCurrentPlayMusicId(QString musicId)
             break;
         }
     }
+}
+
+QString MusicListService::getLyricFilPath()
+{
+    int index = this->getMediaPlayList()->currentIndex();
+    MusicBase* musicBase = this->get(index);
+
+    QFileInfo infoBase(musicBase->getPathName());
+
+    QDir dir(infoBase.absoluteDir().path());
+    dir.setNameFilters(getlyrcTypeFilter());
+    dir.setSorting(QDir::Name);
+
+    for (int i = 0; i < dir.entryList().count(); i++) {
+        QFileInfo info(dir.entryList().at(i));
+        QRegExp reg(info.baseName()+"+");
+
+        int index = reg.indexIn(musicBase->getMusicName());
+        if (index != -1) {
+            return infoBase.absoluteDir().path()+"/"+dir.entryList().at(i);
+        }
+    }
+
+    return "";
 }
 
 void MusicListService::add(QStringList pathList)

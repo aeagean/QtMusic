@@ -31,31 +31,25 @@ void MusicLyricsListModel::reload()
 {
     QList<MusicLyricsModel *> musicLyricsListModel = QList<MusicLyricsModel *>();
 
-//    QFile file("/home/strong/Music/Lyric/不朽之罪.lrc");
-    int index = MusicListService::instance()->getMediaPlayList()->currentIndex();
-    MusicBase* musicBase = MusicListService::instance()->get(index);
-    int i = musicBase->getName().length();
-    int count = musicBase->getPathName().length();
-    qDebug()<<musicBase->getPathName().remove(count-i, i)<<i;
-    QDir dir(musicBase->getPathName().remove(count-i, i) + "/lyric");
-    dir.setNameFilters(QStringList("*.lrc"));
-    dir.setSorting(QDir::Name);
-    qDebug()<<dir.entryList()<<musicBase->getPathName().remove(count-i, i) + "/lyric";
+    QFile file(MusicListService::instance()->getLyricFilPath());
+    if (file.exists() == true) {
 
-//    file.open(QIODevice::ReadOnly);
+        file.open(QIODevice::ReadOnly);
+        while (!file.atEnd()) {
+            QString lineStr = file.readLine().data();
 
-//    while (!file.atEnd()) {
-//        QString lineStr = file.readLine().data();
+            QRegExp reg("[\[]([0-9]+)[\:]([0-9]+)[\.]([0-9]+)[\]]");
+            reg.indexIn(lineStr);
 
-//        QRegExp reg("[\[]([0-9]+)[\:]([0-9]+)[\.]([0-9]+)[\]]");
-//        reg.indexIn(lineStr);
+            MusicLyricsModel* model = new MusicLyricsModel(this);
+            model->setTime(QTime(0, reg.cap(1).toInt(), reg.cap(2).toInt(), 10*reg.cap(3).toInt()));
+            model->setContent(lineStr.remove(reg));
+            musicLyricsListModel.append(model);
+        }
 
-//        MusicLyricsModel* model = new MusicLyricsModel(this);
-//        model->setTime(QTime(0, reg.cap(1).toInt(), reg.cap(2).toInt(), 10*reg.cap(3).toInt()));
-//        model->setContent(lineStr.remove(reg));
-//        musicLyricsListModel.append(model);
-//    }
-//    file.close();
+        file.close();
+    }
+
     notifyResetList(musicLyricsListModel);
 }
 

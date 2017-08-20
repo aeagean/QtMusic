@@ -25,12 +25,15 @@ public:
     QMediaPlaylist *getMediaPlayList();
     void setCurrentPlayMusicId(QString musicId);
 
+    QString getLyricFilPath();
+
 signals:
     void listChanged();
 
 private:
     MusicListService();
     QStringList getMusicTypeFilter();
+    QStringList getlyrcTypeFilter();
 
 private:
     static MusicListService* _instance;
