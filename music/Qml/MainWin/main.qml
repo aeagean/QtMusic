@@ -25,18 +25,24 @@ Window {
         }
 
         LyricsDisplayArea {
-            width: parent.width; height: 22.5*parent.height/30
+            width: parent.width; height: 21*parent.height/30
         }
+
+        Item { width: parent.width; height: 0.5*parent.height/30 }
 
         ProgressBar {
             musicPlayControlModel: musicPlayControl
             width: parent.width; height: 1*parent.height/30
         }
 
+        Item { width: parent.width; height: 0.5*parent.height/30 }
+
         MusicPlayControlBar {
             width: parent.width; height: 3*parent.height/30
             musicPlayControlModel: musicPlayControl
         }
+
+        Item { width: parent.width; height: 0.5*parent.height/30 }
 
         BottomBar {
             width: parent.width; height: 2*parent.height/30

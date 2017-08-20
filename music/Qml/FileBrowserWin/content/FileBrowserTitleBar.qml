@@ -10,17 +10,15 @@ Rectangle {
         id: statusOneId
         visible: true
         anchors.fill: parent
+        spacing: parent.width/30
 
         Rectangle {
             width: parent.width/7; height: parent.height
 
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: -parent.height/20
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: "#474747"
-                text: "＜"
-                font.pixelSize: parent.height/2.5
+            Image {
+                scale: 0.5
+                anchors.centerIn: parent
+                source: "qrc:/Resource/MusicPicture/LeftArrow.png"
             }
 
             MouseArea {

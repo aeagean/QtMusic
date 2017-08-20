@@ -8,7 +8,11 @@ Item {
 
         Rectangle {
             width: parent.width/6; height: parent.height
-//            color: "lightblue"
+            Image {
+                scale: 0.4
+                anchors.centerIn: parent
+                source: "qrc:/Resource/MusicPicture/Folder.png"
+            }
 
             MouseArea {
                 anchors.fill: parent
@@ -17,8 +21,7 @@ Item {
         }
 
         Rectangle {
-            width: 4.3*parent.width/6; height: parent.height
-//            color: "red"
+            width: 4*parent.width/6; height: parent.height
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -37,9 +40,16 @@ Item {
 
         Rectangle {
             anchors.verticalCenter: parent.verticalCenter
-            width: 0.7*parent.width/6; height: width
+            width: 1*parent.width/6; height: width
             radius: width/2
-            color: modelData.isSelected ? "red" : "lightblue"
+
+            Image {
+                scale: 0.4
+                anchors.centerIn: parent
+                source: modelData.isSelected ? "qrc:/Resource/MusicPicture/YellowSelection.png" :
+                                               "qrc:/Resource/MusicPicture/NotoSelection.png"
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: modelData.isSelected = !modelData.isSelected

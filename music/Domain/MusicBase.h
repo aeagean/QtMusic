@@ -29,6 +29,8 @@ public:
     QString getPathName();  /*/Music/I miss.mp3*/
     void setPathName(QString pathName);
 
+
+
 private:
     QString m_id;
     QString m_name;

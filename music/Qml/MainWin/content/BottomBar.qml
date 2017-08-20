@@ -17,11 +17,12 @@ Rectangle {
                 width: parent.width/5; height: parent.height
                 Image {
                     anchors.centerIn: parent
-                    scale: 0.4
-                    source: "qrc:/Resource/MusicPicture/Add.png"
+                    scale: 0.5
+                    source: "qrc:/Resource/MusicPicture/PlayList.png"
                 }
-                onIsClicked: fileBrowser.visible = true
+                onIsClicked: musicPlayListWin.visible = true
             }
+
 
             BaseButton {
                 width: parent.width/5; height: parent.height
@@ -30,21 +31,23 @@ Rectangle {
                 width: parent.width/5; height: parent.height
                 Image {
                     anchors.centerIn: parent
-                    scale: 0.4
+                    scale: 0.5
                     source: "qrc:/Resource/MusicPicture/"+musicPlayControl.playbackModeStr+".png"
                 }
-//                color: "green"
-//                btnText: musicPlayControl.playbackModeStr
                 onIsClicked: musicPlayControl.changedPlaybackMode()
             }
             BaseButton {
                 width: parent.width/5; height: parent.height
             }
+
             BaseButton {
                 width: parent.width/5; height: parent.height
-                color: "green"
-                btnText: "List"
-                onIsClicked: musicPlayListWin.visible = true
+                Image {
+                    anchors.centerIn: parent
+                    scale: 0.48
+                    source: "qrc:/Resource/MusicPicture/Add.png"
+                }
+                onIsClicked: fileBrowser.visible = true
             }
         }
     }

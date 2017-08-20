@@ -15,8 +15,13 @@ Rectangle {
 
             BaseButton {
                 width: parent.width/7; height: parent.height
-                color: "lightblue"
                 onIsClicked: musicPlayListWin.visible = false
+
+                Image {
+                    scale: 0.5
+                    anchors.centerIn: parent
+                    source: "qrc:/Resource/MusicPicture/LeftArrow.png"
+                }
             }
 
         }
