@@ -42,7 +42,14 @@ void MusicLyricsListModel::reload()
             reg.indexIn(lineStr);
 
             MusicLyricsModel* model = new MusicLyricsModel(this);
-            model->setTime(QTime(0, reg.cap(1).toInt(), reg.cap(2).toInt(), 10*reg.cap(3).toInt()));
+            model->setTime(QTime(0,
+                                 reg.cap(1).toInt(),
+                                 reg.cap(2).toInt(),
+                                 reg.cap(3).length() == 1 ? 100*reg.cap(3).toInt() :
+                                 reg.cap(3).length() == 2 ? 10*reg.cap(3).toInt()  :
+                                 reg.cap(3).length() == 3 ? 1*reg.cap(3).toInt()  : 0
+                                 )
+                           );
             model->setContent(lineStr.remove(reg));
             musicLyricsListModel.append(model);
         }
