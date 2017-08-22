@@ -101,12 +101,14 @@ void MusicRepertory::save()
 
     QJsonDocument saveDoc(jsonObj);
     saveFile.write(saveDoc.toJson());
+    saveFile.close();
 }
 
 void MusicRepertory::reload()
 {
     QFile saveFile("save.json");
     saveFile.open(QIODevice::ReadOnly);
+
     QByteArray saveData = saveFile.readAll();
 
     QJsonDocument saveDoc(QJsonDocument::fromJson(saveData));
@@ -114,6 +116,7 @@ void MusicRepertory::reload()
     QJsonArray jsonList = saveDoc.object().value("musicInfoArray").toArray();
     JsonListConvertor<MusicBase> convertor;
     m_musicBaseList = convertor.toList(jsonList);
+    saveFile.close();
 }
 
 QString MusicRepertory::generateRandomId()

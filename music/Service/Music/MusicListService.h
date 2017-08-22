@@ -9,6 +9,7 @@ class MusicListService : public QObject
     Q_OBJECT
 public:
     static MusicListService* instance();
+    virtual ~MusicListService();
 
     QList<MusicBase *> getList();
 

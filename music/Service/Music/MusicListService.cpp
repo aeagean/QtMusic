@@ -21,6 +21,10 @@ MusicListService *MusicListService::instance()
     return _instance;
 }
 
+MusicListService::~MusicListService()
+{
+}
+
 MusicListService::MusicListService()
 {
     m_musicDir.setNameFilters(this->getMusicTypeFilter());
@@ -112,6 +116,8 @@ QString MusicListService::getLyricFilPath()
 {
     int index = this->getMediaPlayList()->currentIndex();
     MusicBase* musicBase = this->get(index);
+
+    if (musicBase == NULL) return "";
 
     QFileInfo infoBase(musicBase->getPathName());
 
