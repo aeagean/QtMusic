@@ -4,6 +4,8 @@ QT += core
 QT += qml quick multimedia
 CONFIG += c++11
 
+RC_ICONS=app.ico
+
 SOURCES += main.cpp \
     Service/FileBrowser/FileBrowserService.cpp \
     Model/MediaPlayControl/MusicPlayControl.cpp \
