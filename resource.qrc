@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Resource/Imiss.mp3</file>
         <file>Resource/MusicPicture/Add.png</file>
         <file>Resource/MusicPicture/Folder.png</file>
         <file>Resource/MusicPicture/Fork.png</file>
