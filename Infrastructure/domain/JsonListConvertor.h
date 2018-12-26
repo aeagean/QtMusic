@@ -1,3 +1,8 @@
+/**********************************************************
+Author: 微信公众号(你才小学生)
+WeChat public platform: nicaixiaoxuesheng
+Email:  2088201923@qq.com
+**********************************************************/
 #ifndef CPP_JSON_LIST_CONVERTOR_H
 #define CPP_JSON_LIST_CONVERTOR_H
 

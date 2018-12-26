@@ -1,3 +1,8 @@
+/**********************************************************
+Author: 微信公众号(你才小学生)
+WeChat public platform: nicaixiaoxuesheng
+Email:  2088201923@qq.com
+**********************************************************/
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
@@ -14,7 +19,7 @@ Window {
     visible: true
     width: 1080*0.3
     height: 1920*0.3
-    title: qsTr("Music")
+    title: qsTr("音乐播放器")
 
     Column {
         anchors.fill: parent
