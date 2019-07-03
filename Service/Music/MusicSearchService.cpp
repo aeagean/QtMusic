@@ -18,7 +18,7 @@ MusicSearchService *MusicSearchService::instance()
 
 QList<MusicBase *> MusicSearchService::getMusicSearchList(QString musicName)
 {
-
+    return QList<MusicBase *>();
 }
 
 MusicSearchService::MusicSearchService()
