@@ -1,7 +1,8 @@
 #include "MusicListService.h"
 #include "MusicPlayControl.h"
+#include <QtDebug>
 
-MusicPlayControl* MusicPlayControl::_instance = NULL;
+MusicPlayControl* MusicPlayControl::_instance = nullptr;
 
 MusicPlayControl::MusicPlayControl()
 {
@@ -23,7 +24,7 @@ MusicPlayControl::MusicPlayControl()
 
 MusicPlayControl *MusicPlayControl::instance()
 {
-    if (_instance == NULL) {
+    if (_instance == nullptr) {
         _instance = new MusicPlayControl();
     }
     return _instance;
@@ -31,12 +32,18 @@ MusicPlayControl *MusicPlayControl::instance()
 
 void MusicPlayControl::nextMusic()
 {
-    m_playList->next();
+    if (!m_playList->isEmpty())
+    {
+        m_playList->next();
+    }
 }
 
 void MusicPlayControl::prevMusic()
 {
-    m_playList->previous();
+    if (!m_playList->isEmpty())
+    {
+        m_playList->previous();
+    }
 }
 
 void MusicPlayControl::changedPlaybackMode()
@@ -119,7 +126,7 @@ void MusicPlayControl::setProgressBarValue(double progressBarValue)
 QString MusicPlayControl::getMusicName()
 {
     MusicBase* musicBase = MusicListService::instance()->get(m_playList->currentIndex());
-    if (musicBase != NULL)
+    if (musicBase != nullptr)
         m_musicName = musicBase->getMusicName();
     else
         m_musicName = "Music";
