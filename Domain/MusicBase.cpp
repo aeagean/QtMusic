@@ -14,7 +14,7 @@ MusicBase::~MusicBase()
 
 }
 
-void MusicBase::fromJson(const QJsonObject data)
+void MusicBase::fromJson(const QJsonObject &data)
 {
     m_id = data.value("id").toString();
     m_name = data.value("name").toString();
@@ -48,7 +48,7 @@ QString MusicBase::getName()
     return m_name;
 }
 
-void MusicBase::setName(QString name)
+void MusicBase::setName(const QString &name)
 {
     m_name = name;
 }
@@ -58,7 +58,7 @@ QString MusicBase::getMusicName()
     return m_musicName;
 }
 
-void MusicBase::setMusicName(QString musicName)
+void MusicBase::setMusicName(const QString &musicName)
 {
     m_musicName = musicName;
 }
@@ -68,7 +68,7 @@ QString MusicBase::getPathName()
     return m_pathName;
 }
 
-void MusicBase::setPathName(QString pathName)
+void MusicBase::setPathName(const QString &pathName)
 {
     m_pathName = pathName;
 }

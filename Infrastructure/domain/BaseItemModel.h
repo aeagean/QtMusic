@@ -12,7 +12,7 @@ class BaseItemModel : public QObject
 {
     Q_OBJECT
 public:
-    BaseItemModel(QObject* parent = 0);
+    BaseItemModel(QObject* parent = nullptr);
 
     Q_INVOKABLE virtual void submit();
     Q_INVOKABLE virtual void revert();

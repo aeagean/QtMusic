@@ -16,7 +16,7 @@ public:
         ModelDataRole = Qt::UserRole + 1
     };
 
-    BaseListModel(QObject* parent = 0);
+    BaseListModel(QObject* parent = nullptr);
 
     Q_INVOKABLE virtual QVariant at(int index) = 0;
     Q_INVOKABLE virtual QVariant last() = 0;

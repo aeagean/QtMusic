@@ -4,11 +4,11 @@
 #include <QJsonDocument>
 #include <QFile>
 
-MusicRepertory * MusicRepertory::_instance = NULL;
+MusicRepertory * MusicRepertory::_instance = nullptr;
 
 MusicRepertory *MusicRepertory::instance()
 {
-    if (_instance == NULL) {
+    if (_instance == nullptr) {
         _instance = new MusicRepertory();
     }
     return _instance;
@@ -27,12 +27,12 @@ MusicBase *MusicRepertory::get(QString id)
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void MusicRepertory::add(MusicBase *musicBase)
 {
-    if (musicBase == NULL)
+    if (musicBase == nullptr)
         return;
 
     musicBase->setId(generateRandomId());
@@ -42,10 +42,12 @@ void MusicRepertory::add(MusicBase *musicBase)
     this->save();
 }
 
-void MusicRepertory::remove(QString id)
+void MusicRepertory::remove(const QString &id)
 {
-    for (int i = 0; i < m_musicBaseList.count(); i++) {
-        if (m_musicBaseList.at(i)->getId() == id) {
+    for (int i = 0; i < m_musicBaseList.count(); i++)
+    {
+        if (m_musicBaseList.at(i)->getId() == id)
+        {
             m_musicBaseList.removeAt(i);
             break;
         }
@@ -56,12 +58,16 @@ void MusicRepertory::remove(QString id)
 
 void MusicRepertory::update(MusicBase *musicBase)
 {
-    if (musicBase == NULL)
+    if (musicBase == nullptr)
+    {
         return;
+    }
 
-    for (int i = 0; i < m_musicBaseList.count(); i++) {
+    for (int i = 0; i < m_musicBaseList.count(); ++i)
+    {
         MusicBase * oldMusicBase = m_musicBaseList.at(i);
-        if (oldMusicBase->getId() == musicBase->getId()) {
+        if (oldMusicBase->getId() == musicBase->getId())
+        {
             delete oldMusicBase;
 
             m_musicBaseList.replace(i, musicBase);

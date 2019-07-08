@@ -13,8 +13,9 @@ class DomainObject
 public:
     DomainObject();
 
-    virtual void fromJson(const QJsonObject data) = 0;
+    virtual void fromJson(const QJsonObject& data) = 0;
     virtual QJsonObject toJson() = 0;
+    virtual ~DomainObject() {}
 };
 
 #endif // CPP_DOMAIN_OBJECT_H

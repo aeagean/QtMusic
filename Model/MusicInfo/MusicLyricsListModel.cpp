@@ -35,6 +35,10 @@ void MusicLyricsListModel::reload()
     if (file.exists() == true) {
 
         file.open(QIODevice::ReadOnly);
+
+        MusicLyricsModel* preModel = nullptr;
+        QTime preTime = QTime(0, 0, 0, 0);
+
         while (!file.atEnd()) {
             QString lineStr = file.readLine().data();
 
@@ -42,16 +46,26 @@ void MusicLyricsListModel::reload()
             reg.indexIn(lineStr);
 
             MusicLyricsModel* model = new MusicLyricsModel(this);
-            model->setTime(QTime(0,
-                                 reg.cap(1).toInt(),
-                                 reg.cap(2).toInt(),
-                                 reg.cap(3).length() == 1 ? 100*reg.cap(3).toInt() :
-                                 reg.cap(3).length() == 2 ? 10*reg.cap(3).toInt()  :
-                                 reg.cap(3).length() == 3 ? 1*reg.cap(3).toInt()  : 0
-                                 )
-                           );
+            QTime curTime = QTime(0,
+                                  reg.cap(1).toInt(),
+                                  reg.cap(2).toInt(),
+                                  reg.cap(3).length() == 1 ? 100*reg.cap(3).toInt() :
+                                  reg.cap(3).length() == 2 ? 10*reg.cap(3).toInt()  :
+                                  reg.cap(3).length() == 3 ? 1*reg.cap(3).toInt()  : 0
+                                  );
+            model->setTime(curTime);
             model->setContent(lineStr.remove(reg));
+
             musicLyricsListModel.append(model);
+
+            if (preModel != nullptr) {
+                int elapsed = preTime.msecsTo(curTime);
+                //qDebug() << "elapsed is:" << elapsed;
+                preModel->setDuration(elapsed);
+            }
+
+            preModel = model;
+            preTime = curTime;
         }
 
         file.close();
@@ -64,7 +78,7 @@ void MusicLyricsListModel::currentIndexChangedSlot(qint64 position)
 {
     for (int i = 0; i < this->size(); i++) {
         if (this->getItemList().at(i)->getTime().msecsSinceStartOfDay() >= position) {
-            this->setCurrentIndex(i);
+            this->setCurrentIndex(i-1);
             break;
         }
     }

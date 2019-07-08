@@ -15,10 +15,10 @@ class MusicBase : public QObject, public DomainObject
     Q_OBJECT
 public:
     MusicBase();
-    virtual ~MusicBase();
+    virtual ~MusicBase() override;
 
-    void fromJson(const QJsonObject data);
-    QJsonObject toJson();
+    void fromJson(const QJsonObject& data) override;
+    QJsonObject toJson() override;
 
     QString getId();
     void setId(QString id);
@@ -26,13 +26,13 @@ public:
     /*"/Music/I miss.mp3"*/
 
     QString getName();      /*I miss.mp3*/
-    void setName(QString name);
+    void setName(const QString& name);
 
     QString getMusicName(); /*I miss*/
-    void setMusicName(QString musicName);
+    void setMusicName(const QString& musicName);
 
     QString getPathName();  /*/Music/I miss.mp3*/
-    void setPathName(QString pathName);
+    void setPathName(const QString& pathName);
 
 private:
     QString m_id;

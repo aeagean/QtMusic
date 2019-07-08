@@ -7,6 +7,7 @@ MusicLyricsModel::MusicLyricsModel(QObject *parent) :
     m_timeStr = "";
     m_time = QTime(0, 0, 0);
     m_content = "";
+    m_duration = 0;
 }
 
 MusicLyricsModel::MusicLyricsModel(QString content, QObject *parent) :
@@ -59,12 +60,24 @@ void MusicLyricsModel::setContent(QString content)
     emit statusChanged();
 }
 
+int MusicLyricsModel::getDuration()
+{
+    return m_duration;
+}
+
+void MusicLyricsModel::setDuration(int duration)
+{
+    m_duration = duration;
+    emit statusChanged();
+}
+
 void MusicLyricsModel::operator=(const MusicLyricsModel &model)
 {
     this->m_id = model.m_id;
     this->m_timeStr = model.m_timeStr;
     this->m_time = model.m_time;
     this->m_content = model.m_content;
+    this->m_duration = model.m_duration;
 
     emit statusChanged();
 }

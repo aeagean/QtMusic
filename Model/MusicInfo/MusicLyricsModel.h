@@ -21,6 +21,8 @@ public:
     Q_PROPERTY(QTime time READ getTime NOTIFY statusChanged)
     Q_PROPERTY(QString content READ getContent NOTIFY statusChanged)
 
+    Q_PROPERTY(int duration READ getDuration NOTIFY statusChanged)
+
     QString getId();
     void setId(QString id);
 
@@ -33,6 +35,9 @@ public:
     QString getContent();
     void setContent(QString content);
 
+    int getDuration();
+    void setDuration(int duration);
+
     void operator=(const MusicLyricsModel& model);
 
 signals:
@@ -43,6 +48,8 @@ private:
     QString m_timeStr;
     QTime m_time;
     QString m_content;
+
+    int m_duration;  //持续时间
 };
 
 #endif // MUSICLYRICSMODEL_H

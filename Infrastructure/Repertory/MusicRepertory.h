@@ -20,7 +20,7 @@ public:
     MusicBase *get(QString id);
 
     void add(MusicBase *musicBase);
-    void remove(QString id);
+    void remove(const QString& id);
     void update(MusicBase *musicBase);
     QMediaPlaylist* getMediaPlayList();
 
